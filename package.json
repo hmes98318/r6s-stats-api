@@ -1,0 +1,29 @@
+{
+  "name": "r6s-stats",
+  "version": "1.0.0",
+  "description": "Fetch Rainbow Six Siege stats",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hmes98318/r6s-stats.git"
+  },
+  "keywords": [
+    "r6",
+    "siege",
+    "api",
+    "rainbow6",
+    "r6s"
+  ],
+  "author": "hmes98318 <s0925677069@gmail.com> (https://github.com/hmes98318)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hmes98318/r6s-stats/issues"
+  },
+  "homepage": "https://github.com/hmes98318/r6s-stats#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.10"
+  }
+}
