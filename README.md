@@ -6,6 +6,11 @@
 **normal work on `Linux` `Max OS`**  
 **`Windows` need to install [`WSL`](https://docs.microsoft.com/en-us/windows/wsl/install) or [`git bash`](https://git-scm.com/download/win)**
 
+## Installation  
+```
+$ npm i r6s-stats-api
+```
+
 ## Example Usage  
 
 ### general(platform `string`, name`string`)
