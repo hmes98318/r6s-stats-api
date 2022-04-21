@@ -1,5 +1,5 @@
 {
-  "name": "r6s-stats-api-api",
+  "name": "r6s-stats-api",
   "version": "1.0.0",
   "description": "Fetch Rainbow Six Siege stats",
   "main": "index.js",
