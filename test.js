@@ -1,33 +1,33 @@
 const R6 = require('./index.js');
 
 
-
-var name = `waifu_-.`
-//var name = `test-wrong-name`
+let platform = 'pc';
+let name = `waifu_-.`
+//let name = `test-wrong-name`
 
 
 async function main() {
 
-  let general = await R6.general('pc', name);
+  let general = await R6.general(platform, name);
   console.log("general", general);
 
 
-  let casual = await R6.casual('pc', name);
+  let casual = await R6.casual(platform, name);
   console.log("casual", casual);
 
 
-  let rank = await R6.rank('pc', name);
+  let rank = await R6.rank(platform, name);
   console.log("rank", rank);
 
 
-  let unrank = await R6.unrank('pc', name);
+  let unrank = await R6.unrank(platform, name);
   console.log("unrank", unrank);
 
-  let deathmatch = await R6.deathmatch('pc', name);
+  let deathmatch = await R6.deathmatch(platform, name);
   console.log("deathmatch", deathmatch);
 
 
-  let operator = await R6.operator('pc', name, 'ace');
+  let operator = await R6.operator(platform, name, 'ace');
   console.log("operator", operator);
 
 }
