@@ -15,7 +15,7 @@ $ npm i r6s-stats-api
 
 ### general(platform `string`, name`string`)
 ```js
-const R6 = require('./index.js');
+const R6 = require('r6s-stats-api');
 
 let name = `waifu_-.`
 let platform = 'pc';
