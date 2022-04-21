@@ -1,10 +1,10 @@
 # r6s-stats-api
-An api for fetching player statistics from Rainbow Six Siege
+### An api for fetching player statistics from Rainbow Six Siege
 
 ### Notice  
-this api depends on the `bash`  
-normal work on `Linux` `Max OS`  
-`Windows` need to install [`WSL`](https://docs.microsoft.com/en-us/windows/wsl/install) or [`git bash`](https://git-scm.com/download/win)
+**this api depends on the `bash`**  
+**normal work on `Linux` `Max OS`**  
+**`Windows` need to install [`WSL`](https://docs.microsoft.com/en-us/windows/wsl/install) or [`git bash`](https://git-scm.com/download/win)**
 
 ## Example Usage  
 
