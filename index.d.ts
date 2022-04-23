@@ -14,6 +14,7 @@ import {StatsOperator} from './types/operator';
  * @param {string} name: Player name.
  * @returns Stats | "FORMAT_ERROR" | "NOT_FOUND"
  * @typedef "FORMAT_ERROR": Input format error.
+ * @typedef "PLATFORM_ERROR": Input platform error.
  * @typedef "NOT_FOUND": No stats found or any errors.
  */
 async function general(platform: string, name: string): Promise<StatsGeneral | "FORMAT_ERROR" | "NOT_FOUND">
@@ -24,6 +25,7 @@ async function general(platform: string, name: string): Promise<StatsGeneral | "
  * @param {string} name: Player name.
  * @returns Stats | "FORMAT_ERROR" | "NOT_FOUND"
  * @typedef "FORMAT_ERROR": Input format error.
+ * @typedef "PLATFORM_ERROR": Input platform error.
  * @typedef "NOT_FOUND": No stats found or any errors.
  */
 declare async function casual(platform: string, name: string): Promise<StatsCasual | "FORMAT_ERROR" | "NOT_FOUND">
@@ -34,6 +36,7 @@ declare async function casual(platform: string, name: string): Promise<StatsCasu
  * @param {string} name: Player name.
  * @returns Stats | "FORMAT_ERROR" | "NOT_FOUND"
  * @typedef "FORMAT_ERROR": Input format error.
+ * @typedef "PLATFORM_ERROR": Input platform error.
  * @typedef "NOT_FOUND": No stats found or any errors.
  */
 declare async function rank(platform: string, name: string): Promise<StatsRank | "FORMAT_ERROR" | "NOT_FOUND">
@@ -44,6 +47,7 @@ declare async function rank(platform: string, name: string): Promise<StatsRank |
  * @param {string} name: Player name.
  * @returns Stats | "FORMAT_ERROR" | "NOT_FOUND"
  * @typedef "FORMAT_ERROR": Input format error.
+ * @typedef "PLATFORM_ERROR": Input platform error.
  * @typedef "NOT_FOUND": No stats found or any errors.
  */
 declare async function unrank(platform: string, name: string): Promise<StatsUnrank | "FORMAT_ERROR" | "NOT_FOUND">
@@ -54,6 +58,7 @@ declare async function unrank(platform: string, name: string): Promise<StatsUnra
  * @param {string} name: Player name.
  * @returns Stats | "FORMAT_ERROR" | "NOT_FOUND"
  * @typedef "FORMAT_ERROR": Input format error.
+ * @typedef "PLATFORM_ERROR": Input platform error.
  * @typedef "NOT_FOUND": No stats found or any errors.
  */
 declare async function deathmatch(platform: string, name: string): Promise<StatsDeathmatch | "FORMAT_ERROR" | "NOT_FOUND">
@@ -64,6 +69,7 @@ declare async function deathmatch(platform: string, name: string): Promise<Stats
  * @param {string} name: Player name.
  * @returns Stats | "FORMAT_ERROR" | "NOT_FOUND"
  * @typedef "FORMAT_ERROR": Input format error.
+ * @typedef "PLATFORM_ERROR": Input platform error.
  * @typedef "NOT_FOUND": No stats found or any errors.
  */
 declare async function operator(platform: string, name: string, operator: string): Promise<StatsOperator | "FORMAT_ERROR" | "NOT_FOUND">
