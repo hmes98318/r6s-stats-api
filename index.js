@@ -41,12 +41,14 @@ module.exports = {
     general_stats.level = level[level.indexOf('Level') + 1];
 
     general_stats.kd = profile[profile.indexOf('KD') + 1];
+    general_stats.kills = level[level.indexOf('Kills') + 1];
     general_stats.deaths = profile[profile.indexOf('Deaths') + 1];
-    general_stats.headshot_ = profile[profile.indexOf('Headshot %') + 1];
-    general_stats.headshots = profile[profile.indexOf('Headshots') + 1];
     general_stats.win_ = profile[profile.indexOf('Win %') + 1];
     general_stats.wins = profile[profile.indexOf('Wins') + 1];
     general_stats.losses = profile[profile.indexOf('Losses') + 1];
+
+    general_stats.headshot_ = profile[profile.indexOf('Headshot %') + 1];
+    general_stats.headshots = profile[profile.indexOf('Headshots') + 1];
 
     general_stats.time_played = profile[profile.indexOf('Time Played') + 1];
     general_stats.matches_played = profile[profile.indexOf('Matches Played') + 1];
@@ -91,8 +93,8 @@ module.exports = {
 
     casual_stats.time_played = profile[profile.indexOf('Time Played') + 1];
     casual_stats.matches = profile[profile.indexOf('Matches') + 1];
-    casual_stats.Kills_match = profile[profile.indexOf('Kills/match') + 1];
-    casual_stats.Kills_min = profile[profile.indexOf('Kills/min') + 1];
+    casual_stats.kills_match = profile[profile.indexOf('Kills/match') + 1];
+    casual_stats.kills_min = profile[profile.indexOf('Kills/min') + 1];
 
     casual_stats.mmr = rank[rank.indexOf('MMR') + 1];
     casual_stats.rank = rank[rank.indexOf('Rank') + 1];
@@ -135,8 +137,8 @@ module.exports = {
 
     rank_stats.time_played = profile[profile.indexOf('Time Played') + 1];
     rank_stats.matches = profile[profile.indexOf('Matches') + 1];
-    rank_stats.Kills_match = profile[profile.indexOf('Kills/match') + 1];
-    rank_stats.Kills_min = profile[profile.indexOf('Kills/min') + 1];
+    rank_stats.kills_match = profile[profile.indexOf('Kills/match') + 1];
+    rank_stats.kills_min = profile[profile.indexOf('Kills/min') + 1];
 
     rank_stats.mmr = rank[rank.indexOf('MMR') + 1];
     rank_stats.rank = rank[rank.indexOf('Rank') + 1];
@@ -178,8 +180,8 @@ module.exports = {
 
     unrank_stats.time_played = profile[profile.indexOf('Time Played') + 1];
     unrank_stats.matches = profile[profile.indexOf('Matches') + 1];
-    unrank_stats.Kills_match = profile[profile.indexOf('Kills/match') + 1];
-    unrank_stats.Kills_min = profile[profile.indexOf('Kills/min') + 1];
+    unrank_stats.kills_match = profile[profile.indexOf('Kills/match') + 1];
+    unrank_stats.kills_min = profile[profile.indexOf('Kills/min') + 1];
 
     return unrank_stats;
   },
@@ -218,7 +220,7 @@ module.exports = {
 
     deathmatch_stats.abandons = profile[profile.indexOf('Abandons') + 1];
     deathmatch_stats.matches = String(parseInt(deathmatch_stats.wins) + parseInt(deathmatch_stats.losses) + parseInt(deathmatch_stats.abandons));
-    deathmatch_stats.Kills_match = profile[profile.indexOf('Kills/Match') + 1];
+    deathmatch_stats.kills_match = profile[profile.indexOf('Kills/Match') + 1];
 
 
     deathmatch_stats.mmr = rank[rank.indexOf('MMR') + 1];
@@ -256,15 +258,17 @@ module.exports = {
     operator_stats.header = header;
 
     operator_stats.operator = profile[board.indexOf("Operator ")];
-    operator_stats.time_played = profile[board.indexOf("Time Played")];
+
+    operator_stats.kd = profile[board.indexOf("K/D")];
     operator_stats.kills = profile[board.indexOf("Kills")];
     operator_stats.deaths = profile[board.indexOf("Deaths")];
-    operator_stats.kd = profile[board.indexOf("K/D")];
+    operator_stats.win_ = profile[board.indexOf("Win %")];
     operator_stats.wins = profile[board.indexOf("Wins")];
     operator_stats.losses = profile[board.indexOf("Losses")];
-    operator_stats.win_ = profile[board.indexOf("Win %")];
+
     operator_stats.headshots_ = profile[board.indexOf("Headshot %")];
 
+    operator_stats.time_played = profile[board.indexOf("Time Played")];
     operator_stats.dbnos = profile[board.indexOf("DBNOs")];
     operator_stats.xp = profile[board.indexOf("XP")];
     operator_stats.melee_kills = profile[board.indexOf("Melee Kills")];

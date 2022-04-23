@@ -23,12 +23,13 @@ module.exports = function (url) {
         });//console.log(imgurl.toArray());
         let header = imgurl.toArray()[0];
 
-
-        if (header.indexOf("ubisoft-avatars") === -1)
-          result[0] = "error";
-
-
         result.push(header);
+
+        if (header.indexOf("ubisoft-avatars") === -1) {
+          result[0] = "error";
+          resolve(result);
+        }
+
 
         for (var i = 0; i < profile.length; i++) {
           if (profile[i].indexOf("Level") !== -1)

@@ -24,21 +24,18 @@ module.exports = function (url) {
         });//console.log(imgurl.toArray());
         let header = imgurl.toArray()[0];
 
-
-        if (header.indexOf("ubisoft-avatars") === -1)
-          result[0] = "error";
-
-
         result.push(header);
-        result.push(rank[2]);
-        /*
-        for(var i = 0; i < profile.length; i++){
-            if(profile[i].indexOf("Ranked") !== -1)
-              result.push(profile[i]);
-        }
-        */
 
-        //console.log(rank);
+        if (header.indexOf("ubisoft-avatars") === -1) {
+          result[0] = "error";
+          resolve(result);
+        }
+
+
+        result.push(rank[2]);
+
+
+        //console.log(profile);
         //console.log(result);
 
 

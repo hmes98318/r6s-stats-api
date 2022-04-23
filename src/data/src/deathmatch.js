@@ -1,5 +1,5 @@
 module.exports = class Stats {
-    constructor(url, name, header, kd, kills, deaths, win_, wins, losses, abandons, matches, Kills_match, mmr, rank, rank_img) {
+    constructor(url, name, header, kd, kills, deaths, win_, wins, losses, abandons, matches, kills_match, mmr, rank, rank_img) {
 
         this.url = url;
         this.name = name;
@@ -14,7 +14,7 @@ module.exports = class Stats {
 
         this.abandons = abandons,
         this.matches = matches,
-        this.Kills_match = Kills_match,
+        this.kills_match = kills_match,
 
         this.mmr = mmr,
         this.rank = rank,

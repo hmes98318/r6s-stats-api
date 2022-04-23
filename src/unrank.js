@@ -8,17 +8,11 @@ module.exports = function (url) {
     exec(`curl ${url}`,
       (error, stdout, stderr) => {
 
-        let rank = [];
         let profile = [];
         let result = [];
 
         let $ = cheerio.load(stdout);
-        /*
-        $('#profile .r6-season__stats')
-        .each(function(i, elem) {
-            rank.push(filterArray($(this).text().split('\n')));
-          })
-        */
+
         $('#profile .trn-card')
           .each(function (i, elem) {
             profile.push(filterArray($(this).text().split('\n')));
@@ -29,13 +23,13 @@ module.exports = function (url) {
         });//console.log(imgurl.toArray());
         let header = imgurl.toArray()[0];
 
-
-        if (header.indexOf("ubisoft-avatars") === -1)
-          result[0] = "error";
-
-
         result.push(header);
-        //result.push(rank[0]);
+
+        if (header.indexOf("ubisoft-avatars") === -1) {
+          result[0] = "error";
+          resolve(result);
+        }
+
 
         for (var i = 0; i < profile.length; i++) {
           if (profile[i].indexOf("UnRanked") !== -1)
