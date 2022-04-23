@@ -21,6 +21,7 @@ module.exports = {
   * @param name Player name
   */
   general: async function (platform, name) {
+    if (typeof(platform) !== "string" || typeof(name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
     const tracker = require('./src/general.js');
@@ -69,6 +70,7 @@ module.exports = {
   * @param name Player name
   */
   casual: async function (platform, name) {
+    if (typeof(platform) !== "string" || typeof(name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
     const tracker = require('./src/casual.js');
@@ -115,6 +117,7 @@ module.exports = {
   * @param name Player name
   */
   rank: async function (platform, name) {
+    if (typeof(platform) !== "string" || typeof(name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
     const tracker = require('./src/rank.js');
@@ -161,6 +164,7 @@ module.exports = {
   * @param name Player name
   */
   unrank: async function (platform, name) {
+    if (typeof(platform) !== "string" || typeof(name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
     const tracker = require('./src/unrank.js');
@@ -202,6 +206,7 @@ module.exports = {
   * @param name Player name
   */
   deathmatch: async function (platform, name) {
+    if (typeof(platform) !== "string" || typeof(name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
     const tracker = require('./src/deathmatch.js');
@@ -249,6 +254,7 @@ module.exports = {
   * @param operator operator name
   */
   operator: async function (platform, name, operator) {
+    if (typeof(platform) !== "string" || typeof(name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
     const tracker = require('./src/operator.js');
