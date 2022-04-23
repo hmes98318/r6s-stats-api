@@ -1,6 +1,6 @@
-exports.general = require('./src/general.js');
-exports.casual = require('./src/casual.js');
-exports.rank = require('./src/rank.js');
-exports.unrank = require('./src/unrank.js');
-exports.deathmatch = require('./src/deathmatch.js');
-exports.operator = require('./src/operator.js');
+exports.dataGeneral = require('./lib/general.js');
+exports.dataCasual = require('./lib/casual.js');
+exports.dataRank = require('./lib/rank.js');
+exports.dataUnrank = require('./lib/unrank.js');
+exports.dataDeathmatch = require('./lib/deathmatch.js');
+exports.dataOperator = require('./lib/operator.js');

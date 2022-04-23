@@ -1,14 +1,15 @@
 const Stats = require('./src/data/stats.js');
-const rankImg = require('./src/modules/rankimg.js');
-const chechPlatform = require('./src/modules/checkplatform.js');
+const Fetch = require('./src/fetch.js');
+const rankImg = require('./src/lib/modules/rankimg.js');
+const chechPlatform = require('./src/lib/modules/checkplatform.js');
 
 
-let general_stats = new Stats.general();
-let casual_stats = new Stats.casual();
-let rank_stats = new Stats.rank();
-let unrank_stats = new Stats.unrank();
-let deathmatch_stats = new Stats.deathmatch();
-let operator_stats = new Stats.operator();
+let stats_general = new Stats.dataGeneral();
+let stats_casual = new Stats.dataCasual();
+let stats_rank = new Stats.dataRank();
+let stats_unrank = new Stats.dataUnrank();
+let stats_deathmatch = new Stats.dataDeathmatch();
+let stats_operator = new Stats.dataOperator();
 
 
 
@@ -18,9 +19,8 @@ module.exports = {
     if (typeof (platform) !== "string" || typeof (name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
-    const tracker = require('./src/general.js');
     let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/`;
-    let track = await tracker(url);
+    let track = await Fetch.trackGeneral(url);
 
     if (track[0] === "error")
       return "NOT_FOUND";
@@ -32,38 +32,37 @@ module.exports = {
     //console.log(track);
 
 
-    general_stats.url = url;
-    general_stats.name = name;
-    general_stats.header = header;
+    stats_general.url = url;
+    stats_general.name = name;
+    stats_general.header = header;
 
-    general_stats.level = level[level.indexOf('Level') + 1];
+    stats_general.level = level[level.indexOf('Level') + 1];
 
-    general_stats.kd = profile[profile.indexOf('KD') + 1];
-    general_stats.kills = level[level.indexOf('Kills') + 1];
-    general_stats.deaths = profile[profile.indexOf('Deaths') + 1];
-    general_stats.win_ = profile[profile.indexOf('Win %') + 1];
-    general_stats.wins = profile[profile.indexOf('Wins') + 1];
-    general_stats.losses = profile[profile.indexOf('Losses') + 1];
+    stats_general.kd = profile[profile.indexOf('KD') + 1];
+    stats_general.kills = level[level.indexOf('Kills') + 1];
+    stats_general.deaths = profile[profile.indexOf('Deaths') + 1];
+    stats_general.win_ = profile[profile.indexOf('Win %') + 1];
+    stats_general.wins = profile[profile.indexOf('Wins') + 1];
+    stats_general.losses = profile[profile.indexOf('Losses') + 1];
 
-    general_stats.headshot_ = profile[profile.indexOf('Headshot %') + 1];
-    general_stats.headshots = profile[profile.indexOf('Headshots') + 1];
+    stats_general.headshot_ = profile[profile.indexOf('Headshot %') + 1];
+    stats_general.headshots = profile[profile.indexOf('Headshots') + 1];
 
-    general_stats.time_played = profile[profile.indexOf('Time Played') + 1];
-    general_stats.matches_played = profile[profile.indexOf('Matches Played') + 1];
-    general_stats.total_xp = profile[profile.indexOf('Total XP') + 1];
-    general_stats.melee_kills = profile[profile.indexOf('Melee Kills') + 1];
-    general_stats.blind_kills = profile[profile.indexOf('Blind Kills') + 1];
+    stats_general.time_played = profile[profile.indexOf('Time Played') + 1];
+    stats_general.matches_played = profile[profile.indexOf('Matches Played') + 1];
+    stats_general.total_xp = profile[profile.indexOf('Total XP') + 1];
+    stats_general.melee_kills = profile[profile.indexOf('Melee Kills') + 1];
+    stats_general.blind_kills = profile[profile.indexOf('Blind Kills') + 1];
 
-    return general_stats;
+    return stats_general;
   },
 
   casual: async function (platform, name) {
     if (typeof (platform) !== "string" || typeof (name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
-    const tracker = require('./src/casual.js');
     let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/`;
-    let track = await tracker(url);
+    let track = await Fetch.trackCasual(url);
 
     if (track[0] === "error")
       return "NOT_FOUND";
@@ -75,36 +74,35 @@ module.exports = {
     //console.log(track);
 
 
-    casual_stats.url = url;
-    casual_stats.name = name;
-    casual_stats.header = header;
+    stats_casual.url = url;
+    stats_casual.name = name;
+    stats_casual.header = header;
 
-    casual_stats.kd = profile[profile.indexOf('KD') + 1];
-    casual_stats.kills = profile[profile.indexOf('Kills') + 1];
-    casual_stats.deaths = profile[profile.indexOf('Deaths') + 1];
-    casual_stats.win_ = profile[profile.indexOf('Win %') + 1];
-    casual_stats.wins = profile[profile.indexOf('Wins') + 1];
-    casual_stats.losses = profile[profile.indexOf('Losses') + 1];
+    stats_casual.kd = profile[profile.indexOf('KD') + 1];
+    stats_casual.kills = profile[profile.indexOf('Kills') + 1];
+    stats_casual.deaths = profile[profile.indexOf('Deaths') + 1];
+    stats_casual.win_ = profile[profile.indexOf('Win %') + 1];
+    stats_casual.wins = profile[profile.indexOf('Wins') + 1];
+    stats_casual.losses = profile[profile.indexOf('Losses') + 1];
 
-    casual_stats.time_played = profile[profile.indexOf('Time Played') + 1];
-    casual_stats.matches = profile[profile.indexOf('Matches') + 1];
-    casual_stats.kills_match = profile[profile.indexOf('Kills/match') + 1];
-    casual_stats.kills_min = profile[profile.indexOf('Kills/min') + 1];
+    stats_casual.time_played = profile[profile.indexOf('Time Played') + 1];
+    stats_casual.matches = profile[profile.indexOf('Matches') + 1];
+    stats_casual.kills_match = profile[profile.indexOf('Kills/match') + 1];
+    stats_casual.kills_min = profile[profile.indexOf('Kills/min') + 1];
 
-    casual_stats.mmr = rank[rank.indexOf('MMR') + 1];
-    casual_stats.rank = rank[rank.indexOf('Rank') + 1];
-    casual_stats.rank_img = rankImg(casual_stats.rank);
+    stats_casual.mmr = rank[rank.indexOf('MMR') + 1];
+    stats_casual.rank = rank[rank.indexOf('Rank') + 1];
+    stats_casual.rank_img = rankImg(stats_casual.rank);
 
-    return casual_stats;
+    return stats_casual;
   },
 
   rank: async function (platform, name) {
     if (typeof (platform) !== "string" || typeof (name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
-    const tracker = require('./src/rank.js');
     let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/`;
-    let track = await tracker(url);
+    let track = await Fetch.trackRank(url);
 
     if (track[0] === "error")
       return "NOT_FOUND";
@@ -116,36 +114,35 @@ module.exports = {
     //console.log(track);
 
 
-    rank_stats.url = url;
-    rank_stats.name = name;
-    rank_stats.header = header;
+    stats_rank.url = url;
+    stats_rank.name = name;
+    stats_rank.header = header;
 
-    rank_stats.kd = profile[profile.indexOf('KD') + 1];
-    rank_stats.kills = profile[profile.indexOf('Kills') + 1];
-    rank_stats.deaths = profile[profile.indexOf('Deaths') + 1];
-    rank_stats.win_ = profile[profile.indexOf('Win %') + 1];
-    rank_stats.wins = profile[profile.indexOf('Wins') + 1];
-    rank_stats.losses = profile[profile.indexOf('Losses') + 1];
+    stats_rank.kd = profile[profile.indexOf('KD') + 1];
+    stats_rank.kills = profile[profile.indexOf('Kills') + 1];
+    stats_rank.deaths = profile[profile.indexOf('Deaths') + 1];
+    stats_rank.win_ = profile[profile.indexOf('Win %') + 1];
+    stats_rank.wins = profile[profile.indexOf('Wins') + 1];
+    stats_rank.losses = profile[profile.indexOf('Losses') + 1];
 
-    rank_stats.time_played = profile[profile.indexOf('Time Played') + 1];
-    rank_stats.matches = profile[profile.indexOf('Matches') + 1];
-    rank_stats.kills_match = profile[profile.indexOf('Kills/match') + 1];
-    rank_stats.kills_min = profile[profile.indexOf('Kills/min') + 1];
+    stats_rank.time_played = profile[profile.indexOf('Time Played') + 1];
+    stats_rank.matches = profile[profile.indexOf('Matches') + 1];
+    stats_rank.kills_match = profile[profile.indexOf('Kills/match') + 1];
+    stats_rank.kills_min = profile[profile.indexOf('Kills/min') + 1];
 
-    rank_stats.mmr = rank[rank.indexOf('MMR') + 1];
-    rank_stats.rank = rank[rank.indexOf('Rank') + 1];
-    rank_stats.rank_img = rankImg(rank_stats.rank);
+    stats_rank.mmr = rank[rank.indexOf('MMR') + 1];
+    stats_rank.rank = rank[rank.indexOf('Rank') + 1];
+    stats_rank.rank_img = rankImg(stats_rank.rank);
 
-    return rank_stats;
+    return stats_rank;
   },
 
   unrank: async function (platform, name) {
     if (typeof (platform) !== "string" || typeof (name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
-    const tracker = require('./src/unrank.js');
     let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/`;
-    let track = await tracker(url);
+    let track = await Fetch.trackUnrank(url);
 
     if (track[0] === "error")
       return "NOT_FOUND";
@@ -156,32 +153,31 @@ module.exports = {
     //console.log(track);
 
 
-    unrank_stats.url = url;
-    unrank_stats.name = name;
-    unrank_stats.header = header;
+    stats_unrank.url = url;
+    stats_unrank.name = name;
+    stats_unrank.header = header;
 
-    unrank_stats.kd = profile[profile.indexOf('KD') + 1];
-    unrank_stats.kills = profile[profile.indexOf('Kills') + 1];
-    unrank_stats.deaths = profile[profile.indexOf('Deaths') + 1];
-    unrank_stats.win_ = profile[profile.indexOf('Win %') + 1];
-    unrank_stats.wins = profile[profile.indexOf('Wins') + 1];
-    unrank_stats.losses = profile[profile.indexOf('Losses') + 1];
+    stats_unrank.kd = profile[profile.indexOf('KD') + 1];
+    stats_unrank.kills = profile[profile.indexOf('Kills') + 1];
+    stats_unrank.deaths = profile[profile.indexOf('Deaths') + 1];
+    stats_unrank.win_ = profile[profile.indexOf('Win %') + 1];
+    stats_unrank.wins = profile[profile.indexOf('Wins') + 1];
+    stats_unrank.losses = profile[profile.indexOf('Losses') + 1];
 
-    unrank_stats.time_played = profile[profile.indexOf('Time Played') + 1];
-    unrank_stats.matches = profile[profile.indexOf('Matches') + 1];
-    unrank_stats.kills_match = profile[profile.indexOf('Kills/match') + 1];
-    unrank_stats.kills_min = profile[profile.indexOf('Kills/min') + 1];
+    stats_unrank.time_played = profile[profile.indexOf('Time Played') + 1];
+    stats_unrank.matches = profile[profile.indexOf('Matches') + 1];
+    stats_unrank.kills_match = profile[profile.indexOf('Kills/match') + 1];
+    stats_unrank.kills_min = profile[profile.indexOf('Kills/min') + 1];
 
-    return unrank_stats;
+    return stats_unrank;
   },
 
   deathmatch: async function (platform, name) {
     if (typeof (platform) !== "string" || typeof (name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
-    const tracker = require('./src/deathmatch.js');
     let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/`;
-    let track = await tracker(url);
+    let track = await Fetch.trackDeathmatch(url);
 
     if (track[0] === "error")
       return "NOT_FOUND";
@@ -193,36 +189,35 @@ module.exports = {
     //console.log(track);
 
 
-    deathmatch_stats.url = url;
-    deathmatch_stats.name = name;
-    deathmatch_stats.header = header;
+    stats_deathmatch.url = url;
+    stats_deathmatch.name = name;
+    stats_deathmatch.header = header;
 
-    deathmatch_stats.kd = profile[profile.indexOf('K/D') + 1];
-    deathmatch_stats.kills = profile[profile.indexOf('Kills') + 1];
-    deathmatch_stats.deaths = profile[profile.indexOf('Deaths') + 1];
-    deathmatch_stats.win_ = profile[profile.indexOf('Win %') + 1];
-    deathmatch_stats.wins = profile[profile.indexOf('Wins') + 1];
-    deathmatch_stats.losses = profile[profile.indexOf('Losses') + 1];
+    stats_deathmatch.kd = profile[profile.indexOf('K/D') + 1];
+    stats_deathmatch.kills = profile[profile.indexOf('Kills') + 1];
+    stats_deathmatch.deaths = profile[profile.indexOf('Deaths') + 1];
+    stats_deathmatch.win_ = profile[profile.indexOf('Win %') + 1];
+    stats_deathmatch.wins = profile[profile.indexOf('Wins') + 1];
+    stats_deathmatch.losses = profile[profile.indexOf('Losses') + 1];
 
-    deathmatch_stats.abandons = profile[profile.indexOf('Abandons') + 1];
-    deathmatch_stats.matches = String(parseInt(deathmatch_stats.wins) + parseInt(deathmatch_stats.losses) + parseInt(deathmatch_stats.abandons));
-    deathmatch_stats.kills_match = profile[profile.indexOf('Kills/Match') + 1];
+    stats_deathmatch.abandons = profile[profile.indexOf('Abandons') + 1];
+    stats_deathmatch.matches = String(parseInt(stats_deathmatch.wins) + parseInt(stats_deathmatch.losses) + parseInt(stats_deathmatch.abandons));
+    stats_deathmatch.kills_match = profile[profile.indexOf('Kills/Match') + 1];
 
 
-    deathmatch_stats.mmr = rank[rank.indexOf('MMR') + 1];
-    deathmatch_stats.rank = rank[rank.indexOf('Rank') + 1];
-    deathmatch_stats.rank_img = rankImg(deathmatch_stats.rank);
+    stats_deathmatch.mmr = rank[rank.indexOf('MMR') + 1];
+    stats_deathmatch.rank = rank[rank.indexOf('Rank') + 1];
+    stats_deathmatch.rank_img = rankImg(stats_deathmatch.rank);
 
-    return deathmatch_stats;
+    return stats_deathmatch;
   },
 
   operator: async function (platform, name, operator) {
     if (typeof (platform) !== "string" || typeof (name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
-    const tracker = require('./src/operator.js');
     let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/operators`;
-    let track = await tracker(url, operator.toUpperCase());
+    let track = await Fetch.trackOperator(url, operator.toUpperCase());
 
     if (track[0] === "error")
       return "NOT_FOUND";
@@ -235,28 +230,28 @@ module.exports = {
     //console.log(track);
 
 
-    operator_stats.url = url;
-    operator_stats.name = name;
-    operator_stats.header = header;
+    stats_operator.url = url;
+    stats_operator.name = name;
+    stats_operator.header = header;
 
-    operator_stats.operator = profile[board.indexOf("Operator ")];
+    stats_operator.operator = profile[board.indexOf("Operator ")];
 
-    operator_stats.kd = profile[board.indexOf("K/D")];
-    operator_stats.kills = profile[board.indexOf("Kills")];
-    operator_stats.deaths = profile[board.indexOf("Deaths")];
-    operator_stats.win_ = profile[board.indexOf("Win %")];
-    operator_stats.wins = profile[board.indexOf("Wins")];
-    operator_stats.losses = profile[board.indexOf("Losses")];
+    stats_operator.kd = profile[board.indexOf("K/D")];
+    stats_operator.kills = profile[board.indexOf("Kills")];
+    stats_operator.deaths = profile[board.indexOf("Deaths")];
+    stats_operator.win_ = profile[board.indexOf("Win %")];
+    stats_operator.wins = profile[board.indexOf("Wins")];
+    stats_operator.losses = profile[board.indexOf("Losses")];
 
-    operator_stats.headshots_ = profile[board.indexOf("Headshot %")];
+    stats_operator.headshots_ = profile[board.indexOf("Headshot %")];
 
-    operator_stats.time_played = profile[board.indexOf("Time Played")];
-    operator_stats.dbnos = profile[board.indexOf("DBNOs")];
-    operator_stats.xp = profile[board.indexOf("XP")];
-    operator_stats.melee_kills = profile[board.indexOf("Melee Kills")];
-    operator_stats.operator_stat = profile[board.indexOf("Operator Stat")];
-    operator_stats.operator_img = operator_img;
+    stats_operator.time_played = profile[board.indexOf("Time Played")];
+    stats_operator.dbnos = profile[board.indexOf("DBNOs")];
+    stats_operator.xp = profile[board.indexOf("XP")];
+    stats_operator.melee_kills = profile[board.indexOf("Melee Kills")];
+    stats_operator.operator_stat = profile[board.indexOf("Operator Stat")];
+    stats_operator.operator_img = operator_img;
 
-    return operator_stats;
+    return stats_operator;
   }
 }
