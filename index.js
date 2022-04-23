@@ -1,5 +1,6 @@
 const Stats = require('./src/data/stats.js');
 const rankImg = require('./src/modules/rankimg.js');
+const chechPlatform = require('./src/modules/checkplatform.js');
 
 
 let general_stats = new Stats.general();
@@ -20,8 +21,10 @@ module.exports = {
   * @param name Player name
   */
   general: async function (platform, name) {
+    if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
+
     const tracker = require('./src/general.js');
-    let url = `https://r6.tracker.network/profile/${platform}/${name}/`;
+    let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/`;
     let track = await tracker(url);
 
     if (track[0] === "error")
@@ -66,8 +69,10 @@ module.exports = {
   * @param name Player name
   */
   casual: async function (platform, name) {
+    if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
+
     const tracker = require('./src/casual.js');
-    let url = `https://r6.tracker.network/profile/${platform}/${name}/`;
+    let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/`;
     let track = await tracker(url);
 
     if (track[0] === "error")
@@ -110,8 +115,10 @@ module.exports = {
   * @param name Player name
   */
   rank: async function (platform, name) {
+    if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
+
     const tracker = require('./src/rank.js');
-    let url = `https://r6.tracker.network/profile/${platform}/${name}/`;
+    let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/`;
     let track = await tracker(url);
 
     if (track[0] === "error")
@@ -154,8 +161,10 @@ module.exports = {
   * @param name Player name
   */
   unrank: async function (platform, name) {
+    if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
+
     const tracker = require('./src/unrank.js');
-    let url = `https://r6.tracker.network/profile/${platform}/${name}/`;
+    let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/`;
     let track = await tracker(url);
 
     if (track[0] === "error")
@@ -193,14 +202,16 @@ module.exports = {
   * @param name Player name
   */
   deathmatch: async function (platform, name) {
+    if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
+
     const tracker = require('./src/deathmatch.js');
-    let url = `https://r6.tracker.network/profile/${platform}/${name}/`;
+    let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/`;
     let track = await tracker(url);
 
     if (track[0] === "error")
       return "NOT_FOUND";
 
-      let header = track[0];
+    let header = track[0];
     let rank = track[1];
     let profile = track[1];
 
@@ -238,8 +249,10 @@ module.exports = {
   * @param operator operator name
   */
   operator: async function (platform, name, operator) {
+    if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
+
     const tracker = require('./src/operator.js');
-    let url = `https://r6.tracker.network/profile/${platform}/${name}/operators`;
+    let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/operators`;
     let track = await tracker(url, operator.toUpperCase());
 
     if (track[0] === "error")

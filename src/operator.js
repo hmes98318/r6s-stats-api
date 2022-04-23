@@ -26,7 +26,7 @@ module.exports = function (url, operator) {
 
         result.push(header);
 
-        if (header.indexOf("ubisoft-avatars") === -1) {
+        if (header.indexOf("avatars") === -1 && header.indexOf("xbox") === -1) {
           result[0] = "error";
           resolve(result);
         }
