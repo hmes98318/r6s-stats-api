@@ -71,14 +71,16 @@ module.exports = {
     if (track[0] === "error")
       return "NOT_FOUND";
 
-    let rank = track[0];
-    let profile = track[1];
+    let header = track[0];
+    let rank = track[1];
+    let profile = track[2];
 
     //console.log(track);
 
 
     casual_stats.url = url;
     casual_stats.name = name;
+    casual_stats.header = header;
 
     casual_stats.kd = profile[profile.indexOf('KD') + 1];
     casual_stats.kills = profile[profile.indexOf('Kills') + 1];
@@ -113,14 +115,16 @@ module.exports = {
     if (track[0] === "error")
       return "NOT_FOUND";
 
-    let rank = track[0];
-    let profile = track[1];
+    let header = track[0];
+    let rank = track[1];
+    let profile = track[2];
 
     //console.log(track);
 
 
     rank_stats.url = url;
     rank_stats.name = name;
+    rank_stats.header = header;
 
     rank_stats.kd = profile[profile.indexOf('KD') + 1];
     rank_stats.kills = profile[profile.indexOf('Kills') + 1];
@@ -155,13 +159,15 @@ module.exports = {
     if (track[0] === "error")
       return "NOT_FOUND";
 
-    let profile = track[0];
+    let header = track[0];
+    let profile = track[1];
 
     //console.log(track);
 
 
     unrank_stats.url = url;
     unrank_stats.name = name;
+    unrank_stats.header = header;
 
     unrank_stats.kd = profile[profile.indexOf('KD') + 1];
     unrank_stats.kills = profile[profile.indexOf('Kills') + 1];
@@ -192,14 +198,16 @@ module.exports = {
     if (track[0] === "error")
       return "NOT_FOUND";
 
-    let rank = track[0];
-    let profile = track[0];
+      let header = track[0];
+    let rank = track[1];
+    let profile = track[1];
 
     //console.log(track);
 
 
     deathmatch_stats.url = url;
     deathmatch_stats.name = name;
+    deathmatch_stats.header = header;
 
     deathmatch_stats.kd = profile[profile.indexOf('K/D') + 1];
     deathmatch_stats.kills = profile[profile.indexOf('Kills') + 1];
@@ -235,15 +243,17 @@ module.exports = {
     if (track[0] === "error")
       return "NOT_FOUND";
 
-    let operator_img = track[0];
-    let board = track[1];
-    let profile = track[2];
+    let header = track[0];
+    let operator_img = track[1];
+    let board = track[2];
+    let profile = track[3];
 
     //console.log(track);
 
 
     operator_stats.url = url;
     operator_stats.name = name;
+    operator_stats.header = header;
 
     operator_stats.operator = profile[board.indexOf("Operator ")];
     operator_stats.time_played = profile[board.indexOf("Time Played")];

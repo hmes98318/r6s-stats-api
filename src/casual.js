@@ -24,7 +24,22 @@ module.exports = function (url) {
             profile.push(filterArray($(this).text().split('\n')));
           })
 
+        $('#profile .trn-card')
+          .each(function (i, elem) {
+            profile.push(filterArray($(this).text().split('\n')));
+          })
 
+        let imgurl = $('img').map(function () {
+          return $(this).attr('src')
+        });//console.log(imgurl.toArray());
+        let header = imgurl.toArray()[0];
+
+
+        if (header.indexOf("ubisoft-avatars") === -1)
+          result[0] = "error";
+
+
+        result.push(header);
         result.push(rank[1]);
 
         for (var i = 0; i < profile.length; i++) {
@@ -37,8 +52,6 @@ module.exports = function (url) {
         //console.log(profile);
         //console.log(result);
 
-        if (!result[0])
-          result[0] = "error";
 
         if (error !== null)
           reject(error);

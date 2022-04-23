@@ -19,6 +19,17 @@ module.exports = function (url, operator) {
             profile.push(filterArray($(this).text().split('\n')));
           })
 
+        let imgurl = $('img').map(function () {
+          return $(this).attr('src')
+        });//console.log(imgurl.toArray());
+        let header = imgurl.toArray()[0];
+
+
+        if (header.indexOf("ubisoft-avatars") === -1)
+          result[0] = "error";
+
+
+        result.push(header);
 
         let operator_img = `https://trackercdn.com/cdn/r6.tracker.network/operators/badges/${operator.toLowerCase()}.png`;
         result.push(operator_img);
@@ -44,8 +55,6 @@ module.exports = function (url, operator) {
         //console.log(profile);
         //console.log(result);
 
-        if (!result[1] || !result[2])
-          result[0] = "error";
 
         if (error !== null)
           reject(error);
