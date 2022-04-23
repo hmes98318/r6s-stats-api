@@ -1,8 +1,9 @@
 module.exports = class Stats {
-    constructor(url, name, operator, time_played, kills, deaths, kd, wins, losses, win_, headshots_, dbnos, xp, melee_kills, operator_stat, operator_img) {
+    constructor(url, name, header, operator, time_played, kills, deaths, kd, wins, losses, win_, headshots_, dbnos, xp, melee_kills, operator_stat, operator_img) {
 
         this.url = url;
         this.name = name;
+        this.header = header;
 
         this.operator = operator,
         this.time_played = time_played,
