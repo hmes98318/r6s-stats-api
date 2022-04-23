@@ -14,14 +14,8 @@ let operator_stats = new Stats.operator();
 
 
 module.exports = {
-  /**
-  * Fetch General stats.
-  * If not found stats or get any error will return "NOT_FOUND".
-  * @param platform Platform for player
-  * @param name Player name
-  */
   general: async function (platform, name) {
-    if (typeof(platform) !== "string" || typeof(name) !== "string") return "FORMAT_ERROR";
+    if (typeof (platform) !== "string" || typeof (name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
     const tracker = require('./src/general.js');
@@ -63,14 +57,8 @@ module.exports = {
     return general_stats;
   },
 
-  /**
-  * Fetch Casual stats.
-  * If not found stats or get any error will return "NOT_FOUND".
-  * @param platform Platform for player
-  * @param name Player name
-  */
   casual: async function (platform, name) {
-    if (typeof(platform) !== "string" || typeof(name) !== "string") return "FORMAT_ERROR";
+    if (typeof (platform) !== "string" || typeof (name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
     const tracker = require('./src/casual.js');
@@ -110,14 +98,8 @@ module.exports = {
     return casual_stats;
   },
 
-  /**
-  * Fetch Rank stats.
-  * If not found stats or get any error will return "NOT_FOUND".
-  * @param platform Platform for player
-  * @param name Player name
-  */
   rank: async function (platform, name) {
-    if (typeof(platform) !== "string" || typeof(name) !== "string") return "FORMAT_ERROR";
+    if (typeof (platform) !== "string" || typeof (name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
     const tracker = require('./src/rank.js');
@@ -157,14 +139,8 @@ module.exports = {
     return rank_stats;
   },
 
-  /**
-  * Fetch Unrank stats.
-  * If not found stats or get any error will return "NOT_FOUND".
-  * @param platform Platform for player
-  * @param name Player name
-  */
   unrank: async function (platform, name) {
-    if (typeof(platform) !== "string" || typeof(name) !== "string") return "FORMAT_ERROR";
+    if (typeof (platform) !== "string" || typeof (name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
     const tracker = require('./src/unrank.js');
@@ -199,14 +175,8 @@ module.exports = {
     return unrank_stats;
   },
 
-  /**
-  * Fetch Deathmatch stats.
-  * If not found stats or get any error will return "NOT_FOUND".
-  * @param platform Platform for player
-  * @param name Player name
-  */
   deathmatch: async function (platform, name) {
-    if (typeof(platform) !== "string" || typeof(name) !== "string") return "FORMAT_ERROR";
+    if (typeof (platform) !== "string" || typeof (name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
     const tracker = require('./src/deathmatch.js');
@@ -246,15 +216,8 @@ module.exports = {
     return deathmatch_stats;
   },
 
-  /**
-  * Fetch Operators stats.
-  * If not found stats or get any error will return "NOT_FOUND".
-  * @param platform Platform for player
-  * @param name Player name
-  * @param operator operator name
-  */
   operator: async function (platform, name, operator) {
-    if (typeof(platform) !== "string" || typeof(name) !== "string") return "FORMAT_ERROR";
+    if (typeof (platform) !== "string" || typeof (name) !== "string") return "FORMAT_ERROR";
     if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
 
     const tracker = require('./src/operator.js');
