@@ -12,10 +12,11 @@ import {StatsOperator} from './types/operator';
  * Fetch General stats.
  * @param {string} platform: "pc" | "xbox" | "psn".
  * @param {string} name: Player name.
- * @returns Stats | "FORMAT_ERROR" | "NOT_FOUND"
+ * @returns Stats | "FORMAT_ERROR" | "PLATFORM_ERROR" | "NOT_FOUND" | "TIME_OUT"
  * @typedef "FORMAT_ERROR": Input format error.
  * @typedef "PLATFORM_ERROR": Input platform error.
  * @typedef "NOT_FOUND": No stats found or any errors.
+ * @typedef "TIME_OUT": Fetch stats request time out.
  */
 async function general(platform: string, name: string): Promise<StatsGeneral | "FORMAT_ERROR" | "NOT_FOUND">
 
@@ -23,10 +24,11 @@ async function general(platform: string, name: string): Promise<StatsGeneral | "
  * Fetch Casual stats.
  * @param {string} platform: "pc" | "xbox" | "psn".
  * @param {string} name: Player name.
- * @returns Stats | "FORMAT_ERROR" | "NOT_FOUND"
+ * @returns Stats | "FORMAT_ERROR" | "PLATFORM_ERROR" | "NOT_FOUND" | "TIME_OUT"
  * @typedef "FORMAT_ERROR": Input format error.
  * @typedef "PLATFORM_ERROR": Input platform error.
  * @typedef "NOT_FOUND": No stats found or any errors.
+ * @typedef "TIME_OUT": Fetch stats request time out.
  */
 declare async function casual(platform: string, name: string): Promise<StatsCasual | "FORMAT_ERROR" | "NOT_FOUND">
 
@@ -34,10 +36,11 @@ declare async function casual(platform: string, name: string): Promise<StatsCasu
  * Fetch Rank stats.
  * @param {string} platform: "pc" | "xbox" | "psn".
  * @param {string} name: Player name.
- * @returns Stats | "FORMAT_ERROR" | "NOT_FOUND"
+ * @returns Stats | "FORMAT_ERROR" | "PLATFORM_ERROR" | "NOT_FOUND" | "TIME_OUT"
  * @typedef "FORMAT_ERROR": Input format error.
  * @typedef "PLATFORM_ERROR": Input platform error.
  * @typedef "NOT_FOUND": No stats found or any errors.
+ * @typedef "TIME_OUT": Fetch stats request time out.
  */
 declare async function rank(platform: string, name: string): Promise<StatsRank | "FORMAT_ERROR" | "NOT_FOUND">
 
@@ -45,10 +48,11 @@ declare async function rank(platform: string, name: string): Promise<StatsRank |
  * Fetch Unrank stats.
  * @param {string} platform: "pc" | "xbox" | "psn".
  * @param {string} name: Player name.
- * @returns Stats | "FORMAT_ERROR" | "NOT_FOUND"
+ * @returns Stats | "FORMAT_ERROR" | "PLATFORM_ERROR" | "NOT_FOUND" | "TIME_OUT"
  * @typedef "FORMAT_ERROR": Input format error.
  * @typedef "PLATFORM_ERROR": Input platform error.
  * @typedef "NOT_FOUND": No stats found or any errors.
+ * @typedef "TIME_OUT": Fetch stats request time out.
  */
 declare async function unrank(platform: string, name: string): Promise<StatsUnrank | "FORMAT_ERROR" | "NOT_FOUND">
 
@@ -56,10 +60,11 @@ declare async function unrank(platform: string, name: string): Promise<StatsUnra
  * Fetch Deathmatch stats.
  * @param {string} platform: "pc" | "xbox" | "psn".
  * @param {string} name: Player name.
- * @returns Stats | "FORMAT_ERROR" | "NOT_FOUND"
+ * @returns Stats | "FORMAT_ERROR" | "PLATFORM_ERROR" | "NOT_FOUND" | "TIME_OUT"
  * @typedef "FORMAT_ERROR": Input format error.
  * @typedef "PLATFORM_ERROR": Input platform error.
  * @typedef "NOT_FOUND": No stats found or any errors.
+ * @typedef "TIME_OUT": Fetch stats request time out.
  */
 declare async function deathmatch(platform: string, name: string): Promise<StatsDeathmatch | "FORMAT_ERROR" | "NOT_FOUND">
 
@@ -67,10 +72,11 @@ declare async function deathmatch(platform: string, name: string): Promise<Stats
  * Fetch Operators stats.
  * @param {string} platform: "pc" | "xbox" | "psn".
  * @param {string} name: Player name.
- * @returns Stats | "FORMAT_ERROR" | "NOT_FOUND"
+ * @returns Stats | "FORMAT_ERROR" | "PLATFORM_ERROR" | "NOT_FOUND" | "TIME_OUT"
  * @typedef "FORMAT_ERROR": Input format error.
  * @typedef "PLATFORM_ERROR": Input platform error.
  * @typedef "NOT_FOUND": No stats found or any errors.
+ * @typedef "TIME_OUT": Fetch stats request time out.
  */
 declare async function operator(platform: string, name: string, operator: string): Promise<StatsOperator | "FORMAT_ERROR" | "NOT_FOUND">
 

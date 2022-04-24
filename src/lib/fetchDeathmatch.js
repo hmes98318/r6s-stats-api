@@ -4,45 +4,50 @@ const filterArray = require('./modules/filterarray.js');
 
 
 module.exports = function (url) {
+  let result = [];
   return new Promise(function (resolve, reject) {
-    exec(`curl ${url}`,
+    exec(`curl --max-time 5 --url ${url}`,
       (error, stdout, stderr) => {
-
-        let rank = [];
-        let profile = [];
-        let result = [];
-
-        let $ = cheerio.load(stdout);
-
-        $('#profile .r6-season__stats')
-          .each(function (i, elem) {
-            rank.push(filterArray($(this).text().split('\n')));
-          })
-
-        let imgurl = $('img').map(function () {
-          return $(this).attr('src')
-        });//console.log(imgurl.toArray());
-        let header = imgurl.toArray()[0];
-
-        result.push(header);
-
-        if (header.indexOf("avatars") === -1 && header.indexOf("xbox") === -1) {
-          result[0] = "error";
+        if (!stdout) {
+          result[0] = "timeout";
           resolve(result);
         }
+        else {
+
+          let rank = [];
+
+          let $ = cheerio.load(stdout);
+
+          $('#profile .r6-season__stats')
+            .each(function (i, elem) {
+              rank.push(filterArray($(this).text().split('\n')));
+            })
+
+          let imgurl = $('img').map(function () {
+            return $(this).attr('src')
+          });//console.log(imgurl.toArray());
+          let header = imgurl.toArray()[0];
+
+          result.push(header);
+
+          if (header.indexOf("avatars") === -1 && header.indexOf("xbox") === -1) {
+            result[0] = "error";
+            resolve(result);
+          }
 
 
-        result.push(rank[2]);
+          result.push(rank[2]);
 
 
-        //console.log(profile);
-        //console.log(result);
+          //console.log(rank);
+          //console.log(result);
 
 
-        if (error !== null) {
-          reject(error);
+          if (error !== null) {
+            reject(error);
+          }
+          resolve(result);
         }
-        resolve(result);
       });
   });
 }

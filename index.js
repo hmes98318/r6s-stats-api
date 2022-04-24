@@ -25,6 +25,9 @@ module.exports = {
     if (track[0] === "error")
       return "NOT_FOUND";
 
+    if (track[0] === "timeout")
+      return "TIME_OUT";
+
     let header = track[0];
     let level = track[1];
     let profile = track[2];
@@ -67,6 +70,9 @@ module.exports = {
     if (track[0] === "error")
       return "NOT_FOUND";
 
+    if (track[0] === "timeout")
+      return "TIME_OUT";
+
     let header = track[0];
     let rank = track[1];
     let profile = track[2];
@@ -106,6 +112,9 @@ module.exports = {
 
     if (track[0] === "error")
       return "NOT_FOUND";
+
+    if (track[0] === "timeout")
+      return "TIME_OUT";
 
     let header = track[0];
     let rank = track[1];
@@ -147,6 +156,9 @@ module.exports = {
     if (track[0] === "error")
       return "NOT_FOUND";
 
+    if (track[0] === "timeout")
+      return "TIME_OUT";
+
     let header = track[0];
     let profile = track[1];
 
@@ -181,6 +193,9 @@ module.exports = {
 
     if (track[0] === "error")
       return "NOT_FOUND";
+
+    if (track[0] === "timeout")
+      return "TIME_OUT";
 
     let header = track[0];
     let rank = track[1];
@@ -221,6 +236,9 @@ module.exports = {
 
     if (track[0] === "error")
       return "NOT_FOUND";
+
+    if (track[0] === "timeout")
+      return "TIME_OUT";
 
     let header = track[0];
     let operator_img = track[1];
