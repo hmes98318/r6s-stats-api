@@ -1,11 +1,11 @@
 // Type definitions for ./index.js
 
-import {StatsGeneral} from './types/general';
-import {StatsCasual} from './types/casual';
-import {StatsRank} from './types/rank';
-import {StatsUnrank} from './types/unrank';
-import {StatsDeathmatch} from './types/deathmatch';
-import {StatsOperator} from './types/operator';
+import { StatsGeneral } from './types/general';
+import { StatsCasual } from './types/casual';
+import { StatsRank } from './types/rank';
+import { StatsUnrank } from './types/unrank';
+import { StatsDeathmatch } from './types/deathmatch';
+import { StatsOperator } from './types/operator';
 
 
 /**
@@ -18,7 +18,7 @@ import {StatsOperator} from './types/operator';
  * @typedef "NOT_FOUND": No stats found or any errors.
  * @typedef "TIME_OUT": Fetch stats request time out.
  */
-async function general(platform: string, name: string): Promise<StatsGeneral | "FORMAT_ERROR" | "NOT_FOUND">
+async function general(platform: string, name: string): Promise<StatsGeneral | "ERROR">
 
 /**
  * Fetch Casual stats.
@@ -30,7 +30,7 @@ async function general(platform: string, name: string): Promise<StatsGeneral | "
  * @typedef "NOT_FOUND": No stats found or any errors.
  * @typedef "TIME_OUT": Fetch stats request time out.
  */
-declare async function casual(platform: string, name: string): Promise<StatsCasual | "FORMAT_ERROR" | "NOT_FOUND">
+declare async function casual(platform: string, name: string): Promise<StatsCasual | "ERROR">
 
 /**
  * Fetch Rank stats.
@@ -42,7 +42,7 @@ declare async function casual(platform: string, name: string): Promise<StatsCasu
  * @typedef "NOT_FOUND": No stats found or any errors.
  * @typedef "TIME_OUT": Fetch stats request time out.
  */
-declare async function rank(platform: string, name: string): Promise<StatsRank | "FORMAT_ERROR" | "NOT_FOUND">
+declare async function rank(platform: string, name: string): Promise<StatsRank | "ERROR">
 
 /**
  * Fetch Unrank stats.
@@ -54,7 +54,7 @@ declare async function rank(platform: string, name: string): Promise<StatsRank |
  * @typedef "NOT_FOUND": No stats found or any errors.
  * @typedef "TIME_OUT": Fetch stats request time out.
  */
-declare async function unrank(platform: string, name: string): Promise<StatsUnrank | "FORMAT_ERROR" | "NOT_FOUND">
+declare async function unrank(platform: string, name: string): Promise<StatsUnrank | "ERROR">
 
 /**
  * Fetch Deathmatch stats.
@@ -66,7 +66,7 @@ declare async function unrank(platform: string, name: string): Promise<StatsUnra
  * @typedef "NOT_FOUND": No stats found or any errors.
  * @typedef "TIME_OUT": Fetch stats request time out.
  */
-declare async function deathmatch(platform: string, name: string): Promise<StatsDeathmatch | "FORMAT_ERROR" | "NOT_FOUND">
+declare async function deathmatch(platform: string, name: string): Promise<StatsDeathmatch | "ERROR">
 
 /**
  * Fetch Operators stats.
@@ -78,7 +78,7 @@ declare async function deathmatch(platform: string, name: string): Promise<Stats
  * @typedef "NOT_FOUND": No stats found or any errors.
  * @typedef "TIME_OUT": Fetch stats request time out.
  */
-declare async function operator(platform: string, name: string, operator: string): Promise<StatsOperator | "FORMAT_ERROR" | "NOT_FOUND">
+declare async function operator(platform: string, name: string, operator: string): Promise<StatsOperator | "ERROR">
 
 
-export {general, casual, rank, unrank, deathmatch, operator };
+export { general, casual, rank, unrank, deathmatch, operator };
