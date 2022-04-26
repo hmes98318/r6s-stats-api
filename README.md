@@ -11,6 +11,47 @@
 $ npm i r6s-stats-api
 ```
 
+
+## Valid Parameters  
+
+
+
+[**general()**](./README.md#generalplatform-string-namestring)  
+> `url`,`name`,`header`,`level`,  
+> `kd`,`kills`,`deaths`,`win_`,`wins`,`losses`,`headshot_`,`headshots`,  
+> `time_played`,`matches_played`,`total_xp`,`melee_kills`,`blind_kills`  
+
+[**casual()**](./README.md#casualplatform-string-namestring)  
+> `url`,`name`,`header`,  
+> `kd`,`kills`,`deaths`,`win_`,`wins`,`losses`,  
+> `time_played`,`matches`,`kills_match`,`kills_min`,`mmr`,`rank`,`rank_img`  
+
+
+[**rank()**](./README.md#rankplatform-string-namestring)  
+> `url`,`name`,`header`,  
+> `kd`,`kills`,`deaths`,`win_`,`wins`,`losses`,  
+> `time_played`,`matches`,`kills_match`,`kills_min`,`mmr`,`rank`,`rank_img`  
+
+
+[**unrank()**](./README.md#unrankplatform-string-namestring)  
+> `url`,`name`,`header`,  
+> `kd`,`kills`,`deaths`,`win_`,`wins`,`losses`,  
+> `time_played`,`matches`,`kills_match`,`kills_min`  
+
+
+[**deathmatch()**](./README.md#deathmatchplatform-string-namestring)  
+> `url`,`name`,`header`,  
+> `kd`,`kills`,`deaths`,`win_`,`wins`,`losses`,`abadons`,  
+> `matches`,`kills_match`,`mmr`,`rank`,`rank_img`  
+
+
+[**operator()**](./README.md#operatorplatform-string-namestring-operatorstring)  
+> `url`,`name`,`header`,  
+> `kd`,`kills`,`deaths`,`win_`,`wins`,`losses`,`headshots_`,  
+> `time_played`,`operator`,`operator_img`,`melee_kills`,`operator_stat`,`dbnos`,`xp`  
+
+
+
 ## Example Usage  
 
 ### general(platform `string`, name`string`)
@@ -33,12 +74,13 @@ general Stats {
   header: 'https://ubisoft-avatars.akamaized.net/c5724a1b-374a-4a7e-898d-9f271ceb152f/default_256_256.png',
   level: '205',
   kd: '1.32',
+  kills: '13,784',
   deaths: '10,470',
+  win_: '53%',
+  wins: '1,810',
+  losses: '1,602',
   headshot_: '39.45%',
   headshots: '5,438',
-  win_: '53%',
-  wins: 'General',
-  losses: '1,602',
   time_played: '790h',
   matches_played: '3,415',
   total_xp: '35,359,675',
@@ -63,6 +105,7 @@ OUTPUT:
 casual Stats {
   url: 'https://r6.tracker.network/profile/pc/waifu_-./',
   name: 'waifu_-.',
+  header: 'https://ubisoft-avatars.akamaized.net/c5724a1b-374a-4a7e-898d-9f271ceb152f/default_256_256.png',
   kd: '1.35',
   kills: '12,430',
   deaths: '9,190',
@@ -71,8 +114,8 @@ casual Stats {
   losses: '1,435',
   time_played: '711h 45m 6s',
   matches: '3,087',
-  Kills_match: '4.03',
-  Kills_min: '0.29',
+  kills_match: '4.03',
+  kills_min: '0.29',
   mmr: '3,571',
   rank: 'PLATINUM II',
   rank_img: 'https://imgur.com/YrDuNNC.png'
@@ -95,6 +138,7 @@ OUTPUT:
 rank Stats {
   url: 'https://r6.tracker.network/profile/pc/waifu_-./',
   name: 'waifu_-.',
+  header: 'https://ubisoft-avatars.akamaized.net/c5724a1b-374a-4a7e-898d-9f271ceb152f/default_256_256.png',
   kd: '1.05',
   kills: '507',
   deaths: '485',
@@ -103,8 +147,8 @@ rank Stats {
   losses: '56',
   time_played: '38h 47m 38s',
   matches: '124',
-  Kills_match: '4.09',
-  Kills_min: '0.22',
+  kills_match: '4.09',
+  kills_min: '0.22',
   mmr: '2,500',
   rank: '-',
   rank_img: 'https://imgur.com/PvLQN8r.png'
@@ -127,7 +171,8 @@ OUTPUT:
 unrank Stats {
   url: 'https://r6.tracker.network/profile/pc/waifu_-./',
   name: 'waifu_-.',
-  kd: '1.07',
+  header: 'https://ubisoft-avatars.akamaized.net/c5724a1b-374a-4a7e-898d-9f271ceb152f/default_256_256.png',
+  kd: ' 1.07',
   kills: '847',
   deaths: '795',
   win_: '44.8%',
@@ -135,8 +180,9 @@ unrank Stats {
   losses: '111',
   time_played: '39h 41m 4s',
   matches: '201',
-  Kills_match: '4.21',
-  Kills_min: '0.36'
+  kills_match: '4.21',
+  kills_min: '0.36'
+}
 */
 ```
 
@@ -155,6 +201,7 @@ OUTPUT:
 deathmatch Stats {
   url: 'https://r6.tracker.network/profile/pc/waifu_-./',
   name: 'waifu_-.',
+  header: 'https://ubisoft-avatars.akamaized.net/c5724a1b-374a-4a7e-898d-9f271ceb152f/default_256_256.png',
   kd: '1.22',
   kills: '128',
   deaths: '105',
@@ -163,7 +210,7 @@ deathmatch Stats {
   losses: '7',
   abandons: '0',
   matches: '11',
-  Kills_match: '11.64',
+  kills_match: '11.64',
   mmr: '2,733',
   rank: 'GOLD III',
   rank_img: 'https://imgur.com/hQzavB2.png'
@@ -186,6 +233,7 @@ OUTPUT:
 operator Stats {
   url: 'https://r6.tracker.network/profile/pc/waifu_-./operators',
   name: 'waifu_-.',
+  header: 'https://ubisoft-avatars.akamaized.net/c5724a1b-374a-4a7e-898d-9f271ceb152f/default_256_256.png',
   operator: 'ACE',
   time_played: '100h 29m',
   kills: '2,216',
@@ -205,3 +253,5 @@ operator Stats {
 ```
 
   
+## Example of made with Discord Bot  
+* [**R6Bot**](https://github.com/hmes98318/R6Bot)
