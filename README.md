@@ -16,36 +16,36 @@ $ npm i r6s-stats-api
 
 
 
-[**general()**](./README.md#generalplatform-string-namestring)  
+[**general()**](https://github.com/hmes98318/r6s-stats-api#generalplatform-string-namestring)  
 > `url`,`name`,`header`,`level`,  
 > `kd`,`kills`,`deaths`,`win_`,`wins`,`losses`,`headshot_`,`headshots`,  
 > `time_played`,`matches_played`,`total_xp`,`melee_kills`,`blind_kills`  
 
-[**casual()**](./README.md#casualplatform-string-namestring)  
+[**casual()**](https://github.com/hmes98318/r6s-stats-api#casualplatform-string-namestring)  
 > `url`,`name`,`header`,  
 > `kd`,`kills`,`deaths`,`win_`,`wins`,`losses`,  
 > `time_played`,`matches`,`kills_match`,`kills_min`,`mmr`,`rank`,`rank_img`  
 
 
-[**rank()**](./README.md#rankplatform-string-namestring)  
+[**rank()**](https://github.com/hmes98318/r6s-stats-api#rankplatform-string-namestring)  
 > `url`,`name`,`header`,  
 > `kd`,`kills`,`deaths`,`win_`,`wins`,`losses`,  
 > `time_played`,`matches`,`kills_match`,`kills_min`,`mmr`,`rank`,`rank_img`  
 
 
-[**unrank()**](./README.md#unrankplatform-string-namestring)  
+[**unrank()**](https://github.com/hmes98318/r6s-stats-api#unrankplatform-string-namestring)  
 > `url`,`name`,`header`,  
 > `kd`,`kills`,`deaths`,`win_`,`wins`,`losses`,  
 > `time_played`,`matches`,`kills_match`,`kills_min`  
 
 
-[**deathmatch()**](./README.md#deathmatchplatform-string-namestring)  
+[**deathmatch()**](https://github.com/hmes98318/r6s-stats-api#deathmatchplatform-string-namestring)  
 > `url`,`name`,`header`,  
 > `kd`,`kills`,`deaths`,`win_`,`wins`,`losses`,`abadons`,  
 > `matches`,`kills_match`,`mmr`,`rank`,`rank_img`  
 
 
-[**operator()**](./README.md#operatorplatform-string-namestring-operatorstring)  
+[**operator()**](https://github.com/hmes98318/r6s-stats-api#operatorplatform-string-namestring-operatorstring)  
 > `url`,`name`,`header`,  
 > `kd`,`kills`,`deaths`,`win_`,`wins`,`losses`,`headshots_`,  
 > `time_played`,`operator`,`operator_img`,`melee_kills`,`operator_stat`,`dbnos`,`xp`  
