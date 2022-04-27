@@ -1,6 +1,6 @@
 {
   "name": "r6s-stats-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An api for fetching player statistics from Rainbow Six Siege",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,8 @@
     "siege",
     "api",
     "rainbow6",
-    "r6s"
+    "r6s",
+    "stats"
   ],
   "author": "hmes98318 <s0925677069@gmail.com> (https://github.com/hmes98318)",
   "license": "MIT",
