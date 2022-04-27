@@ -12,9 +12,24 @@ $ npm i r6s-stats-api
 ```
 
 
+## Example Usage  
+You can get the statistics struct of a player by using the code below.  
+```js
+const R6 = require('r6s-stats-api');
+
+let name = `waifu_-.`
+let platform = 'pc';
+
+async function main() {
+  let general = await R6.general(platform, name);
+  console.log("general", general);
+}
+main();
+```
+
+
+
 ## Valid Parameters  
-
-
 
 [**general()**](https://github.com/hmes98318/r6s-stats-api#generalplatform-string-namestring)  
 > `url`,`name`,`header`,`level`,  
@@ -52,15 +67,10 @@ $ npm i r6s-stats-api
 
 
 
-## Example Usage  
+## Available Functions  
 
 ### general(platform `string`, name`string`)
 ```js
-const R6 = require('r6s-stats-api');
-
-let name = `waifu_-.`
-let platform = 'pc';
-
 async function main() {
   let general = await R6.general(platform, name);
   console.log("general", general);
@@ -92,9 +102,6 @@ general Stats {
 
 ### casual(platform `string`, name`string`)
 ```js
-let name = `waifu_-.`
-let platform = 'pc';
-
 async function main() {
   let casual = await R6.casual(platform, name);
   console.log("casual", casual);
@@ -125,9 +132,6 @@ casual Stats {
 
 ### rank(platform `string`, name`string`)
 ```js
-let name = `waifu_-.`
-let platform = 'pc';
-
 async function main() {
   let rank = await R6.rank(platform, name);
   console.log("rank", rank);
@@ -158,9 +162,6 @@ rank Stats {
 
 ### unrank(platform `string`, name`string`)
 ```js
-let name = `waifu_-.`
-let platform = 'pc';
-
 async function main() {
   let unrank = await R6.unrank(platform, name);
   console.log("unrank", unrank);
@@ -188,9 +189,6 @@ unrank Stats {
 
 ### deathmatch(platform `string`, name`string`)
 ```js
-let name = `waifu_-.`
-let platform = 'pc';
-
 async function main() {
   let deathmatch = await R6.deathmatch(platform, name);
   console.log("deathmatch", deathmatch);
@@ -220,9 +218,6 @@ deathmatch Stats {
 
 ### operator(platform `string`, name`string`, operator`string`)
 ```js
-let name = `waifu_-.`
-let platform = 'pc';
-
 async function main() {
   let operator = await R6.operator('pc', name, 'ace');
   console.log("operator", operator);
