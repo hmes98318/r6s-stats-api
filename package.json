@@ -1,6 +1,6 @@
 {
   "name": "r6s-stats-api",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "An api for fetching player statistics from Rainbow Six Siege",
   "main": "index.js",
   "scripts": {
@@ -25,6 +25,6 @@
   },
   "homepage": "https://github.com/hmes98318/r6s-stats-api#readme",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.10"
+    "cheerio": "^1.0.0-rc.12"
   }
 }
