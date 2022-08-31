@@ -20,9 +20,6 @@ async function main() {
   console.log("rank", rank);
 
 
-  let unrank = await R6.unrank(platform, name);
-  console.log("unrank", unrank);
-
   let deathmatch = await R6.deathmatch(platform, name);
   console.log("deathmatch", deathmatch);
 
