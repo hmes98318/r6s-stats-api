@@ -24,8 +24,8 @@ You can get the statistics struct of a player by using the code below.
 ```js
 const R6 = require('r6s-stats-api');
 
-let name = `waifu_-.`
-let platform = 'pc';
+let platform = "pc";
+let name = "waifu_-.";
 
 async function main() {
   let general = await R6.general(platform, name);

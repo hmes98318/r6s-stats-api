@@ -1,9 +1,9 @@
 const R6 = require('./index.js');
 
 
-let platform = 'pc';
-let name = `waifu_-.`
-//let name = `test-wrong-name`
+let platform = "pc";
+let name = "waifu_-.";
+//let name = "test-wrong-name"
 
 
 async function main() {
