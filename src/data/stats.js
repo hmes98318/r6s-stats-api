@@ -1,6 +1,6 @@
-exports.dataGeneral = require('./lib/general.js');
-exports.dataCasual = require('./lib/casual.js');
-exports.dataRank = require('./lib/rank.js');
-exports.dataUnrank = require('./lib/unrank.js');
-exports.dataDeathmatch = require('./lib/deathmatch.js');
-exports.dataOperator = require('./lib/operator.js');
+exports.dataGeneral = require('./struct/general');
+exports.dataCasual = require('./struct/casual');
+exports.dataRank = require('./struct/rank');
+exports.dataUnrank = require('./struct/unrank');
+exports.dataDeathmatch = require('./struct/deathmatch');
+exports.dataOperator = require('./struct/operator');
