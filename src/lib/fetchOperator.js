@@ -1,6 +1,6 @@
 const cheerio = require("cheerio");
 const { exec } = require('child_process');
-const filterArray = require('./modules/filterarray.js');
+const filterArray = require('./modules/filterarray');
 
 
 module.exports = function (url, operator) {

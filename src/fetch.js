@@ -1,6 +1,6 @@
-exports.trackGeneral = require('./lib/fetchGeneral.js');
-exports.trackCasual = require('./lib/fetchCasual.js');
-exports.trackRank = require('./lib/fetchRank.js');
-exports.trackUnrank = require('./lib/fetchUnrank.js');
-exports.trackDeathmatch = require('./lib/fetchDeathmatch.js');
-exports.trackOperator = require('./lib/fetchOperator.js');
+exports.trackGeneral = require('./lib/fetchGeneral');
+exports.trackCasual = require('./lib/fetchCasual');
+exports.trackRank = require('./lib/fetchRank');
+exports.trackUnrank = require('./lib/fetchUnrank');
+exports.trackDeathmatch = require('./lib/fetchDeathmatch');
+exports.trackOperator = require('./lib/fetchOperator');

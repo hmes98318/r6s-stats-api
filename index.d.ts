@@ -45,18 +45,6 @@ declare async function casual(platform: string, name: string): Promise<StatsCasu
 declare async function rank(platform: string, name: string): Promise<StatsRank | "ERROR">
 
 /**
- * Fetch Unrank stats.
- * @param {string} platform: "pc" | "xbox" | "psn".
- * @param {string} name: Player name.
- * @returns Stats | "FORMAT_ERROR" | "PLATFORM_ERROR" | "NOT_FOUND" | "TIME_OUT"
- * @typedef "FORMAT_ERROR": Input format error.
- * @typedef "PLATFORM_ERROR": Input platform error.
- * @typedef "NOT_FOUND": No stats found or any errors.
- * @typedef "TIME_OUT": Fetch stats request time out.
- */
-declare async function unrank(platform: string, name: string): Promise<StatsUnrank | "ERROR">
-
-/**
  * Fetch Deathmatch stats.
  * @param {string} platform: "pc" | "xbox" | "psn".
  * @param {string} name: Player name.
@@ -81,4 +69,4 @@ declare async function deathmatch(platform: string, name: string): Promise<Stats
 declare async function operator(platform: string, name: string, operator: string): Promise<StatsOperator | "ERROR">
 
 
-export { general, casual, rank, unrank, deathmatch, operator };
+export { general, casual, rank, deathmatch, operator };

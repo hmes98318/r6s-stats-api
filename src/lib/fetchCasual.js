@@ -1,6 +1,6 @@
 const cheerio = require("cheerio");
 const { exec } = require('child_process');
-const filterArray = require('./modules/filterarray.js');
+const filterArray = require('./modules/filterarray');
 
 
 module.exports = function (url) {
@@ -50,7 +50,7 @@ module.exports = function (url) {
           result.push(rank[1]);
 
           for (var i = 0; i < profile.length; i++) {
-            if (profile[i].indexOf("Casual") !== -1)
+            if (profile[i].indexOf("Unranked And Casual") !== -1)
               result.push(profile[i]);
           }
 
