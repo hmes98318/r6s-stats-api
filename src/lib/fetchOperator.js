@@ -63,6 +63,10 @@ module.exports = function (url, operator) {
           if (error !== null)
             reject(error);
 
+          if(result.length < 4)
+            result[0] = "operator_error";
+            resolve(result);
+
           resolve(result);
         }
       });

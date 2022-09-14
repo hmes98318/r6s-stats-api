@@ -243,6 +243,9 @@ module.exports = {
     if (track[0] === "timeout")
       return "TIME_OUT";
 
+    if (track[0] === "operator_error")
+      return "OPERATOR_ERROR";
+
     let header = track[0];
     let operator_img = track[1];
     let board = track[2];
