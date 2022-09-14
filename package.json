@@ -1,6 +1,6 @@
 {
   "name": "r6s-stats-api",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "An api for fetching player statistics from Rainbow Six Siege",
   "main": "index.js",
   "scripts": {
