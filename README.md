@@ -223,5 +223,5 @@ operator Stats {
 
   
 ## Example of made with Discord Bot  
-* [**hmes98318/R6Bot**](https://github.com/hmes98318/R6Bot)  
+* [**hmes98318/R6Bot**](https://github.com/hmes98318/R6Bot) ([invite link](https://discord.com/oauth2/authorize?client_id=968916779734806578&permissions=0&scope=bot%20applications.commands))  
 * [**KieranRobson/Clarence-Bot**](https://github.com/KieranRobson/Clarence-Bot)
