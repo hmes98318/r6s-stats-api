@@ -11,7 +11,7 @@
 **This api depend on the `bash`**  
 **normal work on `Linux` `Max OS`**  
 **`Windows` need to install [`WSL`](https://docs.microsoft.com/en-us/windows/wsl/install) or [`git bash`](https://git-scm.com/download/win)**  
-**There may be problems with using the `PowerShell`**  
+**There may be problems with using the `PowerShell` `Docker`**  
 
 ## Installation  
 ```
