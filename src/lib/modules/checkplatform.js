@@ -1,12 +1,10 @@
-const options = ["pc", "psn", "xbox"];
+const options = ['pc', 'psn', 'xbox']
 
 module.exports = function (platform) {
-    if (!platform)
-        return false;
+    if (!platform) return false
 
     for (let element of options) {
-        if (platform === element)
-            return true;
+        if (platform === element) return true
     }
-    return false;
+    return false
 }

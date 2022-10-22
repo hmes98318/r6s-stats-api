@@ -7,76 +7,78 @@
 
 ### An api for fetching player statistics from Rainbow Six Siege
 
-### Notice  
+### Notice
+
 **This api depend on the `bash`**  
 **normal work on `Linux` `Max OS`**  
 **`Windows` need to install [`WSL`](https://docs.microsoft.com/en-us/windows/wsl/install) or [`git bash`](https://git-scm.com/download/win)**  
-**There may be problems with using the `PowerShell` `Docker`**  
+**There may be problems with using the `PowerShell` `Docker`**
 
-## Installation  
+## Installation
+
 ```
 $ npm i r6s-stats-api
 ```
 
+## Example Usage
 
-## Example Usage  
-You can get the statistics struct of a player by using the code below.  
+You can get the statistics struct of a player by using the code below.
+
 ```js
-const R6 = require('r6s-stats-api');
+const R6 = require('r6s-stats-api')
 
-let platform = "pc";
-let name = "waifu_-.";
+let platform = 'pc'
+let name = 'waifu_-.'
 
 async function main() {
-  let general = await R6.general(platform, name);
-  console.log("general", general);
+    let general = await R6.general(platform, name)
+    console.log('general', general)
 }
-main();
+main()
 ```
 
+## Valid Parameters
 
+[**general()**](https://github.com/hmes98318/r6s-stats-api#generalplatform-string-namestring)
 
-## Valid Parameters  
-
-[**general()**](https://github.com/hmes98318/r6s-stats-api#generalplatform-string-namestring)  
 > `url`,`name`,`header`,`level`,  
 > `kd`,`kills`,`deaths`,`win_`,`wins`,`losses`,`headshot_`,`headshots`,  
-> `time_played`,`matches_played`,`total_xp`,`melee_kills`,`blind_kills`  
+> `time_played`,`matches_played`,`total_xp`,`melee_kills`,`blind_kills`
 
-[**casual()**](https://github.com/hmes98318/r6s-stats-api#casualplatform-string-namestring)  
+[**casual()**](https://github.com/hmes98318/r6s-stats-api#casualplatform-string-namestring)
+
 > `url`,`name`,`header`,  
 > `kd`,`kills`,`deaths`,`win_`,`wins`,`losses`,  
-> `time_played`,`matches`,`kills_match`,`kills_min`,`mmr`,`rank`,`rank_img`  
+> `time_played`,`matches`,`kills_match`,`kills_min`,`mmr`,`rank`,`rank_img`
 
+[**rank()**](https://github.com/hmes98318/r6s-stats-api#rankplatform-string-namestring)
 
-[**rank()**](https://github.com/hmes98318/r6s-stats-api#rankplatform-string-namestring)  
 > `url`,`name`,`header`,  
 > `kd`,`kills`,`deaths`,`win_`,`wins`,`losses`,  
-> `time_played`,`matches`,`kills_match`,`kills_min`,`mmr`,`rank`,`rank_img`  
- 
+> `time_played`,`matches`,`kills_match`,`kills_min`,`mmr`,`rank`,`rank_img`
 
-[**deathmatch()**](https://github.com/hmes98318/r6s-stats-api#deathmatchplatform-string-namestring)  
+[**deathmatch()**](https://github.com/hmes98318/r6s-stats-api#deathmatchplatform-string-namestring)
+
 > `url`,`name`,`header`,  
 > `kd`,`kills`,`deaths`,`win_`,`wins`,`losses`,`abadons`,  
-> `matches`,`kills_match`,`mmr`,`rank`,`rank_img`  
+> `matches`,`kills_match`,`mmr`,`rank`,`rank_img`
 
+[**operator()**](https://github.com/hmes98318/r6s-stats-api#operatorplatform-string-namestring-operatorstring)
 
-[**operator()**](https://github.com/hmes98318/r6s-stats-api#operatorplatform-string-namestring-operatorstring)  
 > `url`,`name`,`header`,  
 > `kd`,`kills`,`deaths`,`win_`,`wins`,`losses`,`headshots_`,  
-> `time_played`,`operator`,`operator_img`,`melee_kills`,`operator_stat`,`dbnos`,`xp`  
+> `time_played`,`operator`,`operator_img`,`melee_kills`,`operator_stat`,`dbnos`,`xp`
 
-
-
-## Available Functions  
+## Available Functions
 
 ### general(platform `string`, name`string`)
+
 ```js
 async function main() {
-  let general = await R6.general(platform, name);
-  console.log("general", general);
+    let general = await R6.general(platform, name)
+    console.log('general', general)
 }
-main();
+main()
 /*
 OUTPUT:
 general Stats {
@@ -102,12 +104,13 @@ general Stats {
 ```
 
 ### casual(platform `string`, name`string`)
+
 ```js
 async function main() {
-  let casual = await R6.casual(platform, name);
-  console.log("casual", casual);
+    let casual = await R6.casual(platform, name)
+    console.log('casual', casual)
 }
-main();
+main()
 /*
 OUTPUT:
 casual Stats {
@@ -132,12 +135,13 @@ casual Stats {
 ```
 
 ### rank(platform `string`, name`string`)
+
 ```js
 async function main() {
-  let rank = await R6.rank(platform, name);
-  console.log("rank", rank);
+    let rank = await R6.rank(platform, name)
+    console.log('rank', rank)
 }
-main();
+main()
 /*
 OUTPUT:
 rank Stats {
@@ -162,12 +166,13 @@ rank Stats {
 ```
 
 ### deathmatch(platform `string`, name`string`)
+
 ```js
 async function main() {
-  let deathmatch = await R6.deathmatch(platform, name);
-  console.log("deathmatch", deathmatch);
+    let deathmatch = await R6.deathmatch(platform, name)
+    console.log('deathmatch', deathmatch)
 }
-main();
+main()
 /*
 OUTPUT:
 deathmatch Stats {
@@ -191,12 +196,13 @@ deathmatch Stats {
 ```
 
 ### operator(platform `string`, name`string`, operator`string`)
+
 ```js
 async function main() {
-  let operator = await R6.operator('pc', name, 'ace');
-  console.log("operator", operator);
+    let operator = await R6.operator('pc', name, 'ace')
+    console.log('operator', operator)
 }
-main();
+main()
 /*
 OUTPUT:
 operator Stats {
@@ -221,7 +227,7 @@ operator Stats {
 */
 ```
 
-  
-## Example of made with Discord Bot  
-* [**hmes98318/R6Bot**](https://github.com/hmes98318/R6Bot) ([invite link](https://discord.com/oauth2/authorize?client_id=968916779734806578&permissions=0&scope=bot%20applications.commands))  
-* [**KieranRobson/Clarence-Bot**](https://github.com/KieranRobson/Clarence-Bot)
+## Example of made with Discord Bot
+
+-   [**hmes98318/R6Bot**](https://github.com/hmes98318/R6Bot) ([invite link](https://discord.com/oauth2/authorize?client_id=968916779734806578&permissions=0&scope=bot%20applications.commands))
+-   [**KieranRobson/Clarence-Bot**](https://github.com/KieranRobson/Clarence-Bot)

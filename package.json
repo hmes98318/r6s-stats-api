@@ -1,30 +1,35 @@
 {
-  "name": "r6s-stats-api",
-  "version": "1.1.1",
-  "description": "An api for fetching player statistics from Rainbow Six Siege",
-  "main": "index.js",
-  "scripts": {
-    "test": "node ./test.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hmes98318/r6s-stats-api.git"
-  },
-  "keywords": [
-    "r6",
-    "siege",
-    "api",
-    "rainbow6",
-    "r6s",
-    "stats"
-  ],
-  "author": "hmes98318 <s0925677069@gmail.com> (https://github.com/hmes98318)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/hmes98318/r6s-stats-api/issues"
-  },
-  "homepage": "https://github.com/hmes98318/r6s-stats-api#readme",
-  "dependencies": {
-    "cheerio": "^1.0.0-rc.12"
-  }
+    "name": "r6s-stats-api",
+    "version": "1.1.1",
+    "description": "An api for fetching player statistics from Rainbow Six Siege",
+    "main": "index.js",
+    "scripts": {
+        "prettier": "prettier --debug-check .",
+        "prettier:fix": "prettier --write .",
+        "test": "node ./test.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hmes98318/r6s-stats-api.git"
+    },
+    "keywords": [
+        "r6",
+        "siege",
+        "api",
+        "rainbow6",
+        "r6s",
+        "stats"
+    ],
+    "author": "hmes98318 <s0925677069@gmail.com> (https://github.com/hmes98318)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/hmes98318/r6s-stats-api/issues"
+    },
+    "homepage": "https://github.com/hmes98318/r6s-stats-api#readme",
+    "dependencies": {
+        "cheerio": "^1.0.0-rc.12"
+    },
+    "devDependencies": {
+        "prettier": "2.7.1"
+    }
 }
