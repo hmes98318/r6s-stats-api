@@ -1,11 +1,11 @@
 // Type definitions for ./index.js
 
-import { StatsGeneral } from './types/general'
-import { StatsCasual } from './types/casual'
-import { StatsRank } from './types/rank'
-import { StatsUnrank } from './types/unrank'
-import { StatsDeathmatch } from './types/deathmatch'
-import { StatsOperator } from './types/operator'
+import { StatsGeneral } from './types/general';
+import { StatsCasual } from './types/casual';
+import { StatsRank } from './types/rank';
+import { StatsUnrank } from './types/unrank';
+import { StatsDeathmatch } from './types/deathmatch';
+import { StatsOperator } from './types/operator';
 
 /**
  * Fetch General stats.
@@ -18,9 +18,9 @@ import { StatsOperator } from './types/operator'
  * @typedef "TIME_OUT": Fetch stats request time out.
  */
 async function general(
-    platform: string,
-    name: string
-): Promise<StatsGeneral | 'ERROR'>
+  platform: string,
+  name: string
+): Promise<StatsGeneral | 'ERROR'>;
 
 /**
  * Fetch Casual stats.
@@ -33,9 +33,9 @@ async function general(
  * @typedef "TIME_OUT": Fetch stats request time out.
  */
 declare async function casual(
-    platform: string,
-    name: string
-): Promise<StatsCasual | 'ERROR'>
+  platform: string,
+  name: string
+): Promise<StatsCasual | 'ERROR'>;
 
 /**
  * Fetch Rank stats.
@@ -48,9 +48,9 @@ declare async function casual(
  * @typedef "TIME_OUT": Fetch stats request time out.
  */
 declare async function rank(
-    platform: string,
-    name: string
-): Promise<StatsRank | 'ERROR'>
+  platform: string,
+  name: string
+): Promise<StatsRank | 'ERROR'>;
 
 /**
  * Fetch Deathmatch stats.
@@ -63,9 +63,9 @@ declare async function rank(
  * @typedef "TIME_OUT": Fetch stats request time out.
  */
 declare async function deathmatch(
-    platform: string,
-    name: string
-): Promise<StatsDeathmatch | 'ERROR'>
+  platform: string,
+  name: string
+): Promise<StatsDeathmatch | 'ERROR'>;
 
 /**
  * Fetch Operators stats.
@@ -78,9 +78,9 @@ declare async function deathmatch(
  * @typedef "TIME_OUT": Fetch stats request time out.
  */
 declare async function operator(
-    platform: string,
-    name: string,
-    operator: string
-): Promise<StatsOperator | 'ERROR'>
+  platform: string,
+  name: string,
+  operator: string
+): Promise<StatsOperator | 'ERROR'>;
 
-export { general, casual, rank, deathmatch, operator }
+export { general, casual, rank, deathmatch, operator };

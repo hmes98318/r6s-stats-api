@@ -25,16 +25,16 @@ $ npm i r6s-stats-api
 You can get the statistics struct of a player by using the code below.
 
 ```js
-const R6 = require('r6s-stats-api')
+const R6 = require('r6s-stats-api');
 
-let platform = 'pc'
-let name = 'waifu_-.'
+let platform = 'pc';
+let name = 'waifu_-.';
 
 async function main() {
-    let general = await R6.general(platform, name)
-    console.log('general', general)
+  let general = await R6.general(platform, name);
+  console.log('general', general);
 }
-main()
+main();
 ```
 
 ## Valid Parameters
@@ -75,10 +75,10 @@ main()
 
 ```js
 async function main() {
-    let general = await R6.general(platform, name)
-    console.log('general', general)
+  let general = await R6.general(platform, name);
+  console.log('general', general);
 }
-main()
+main();
 /*
 OUTPUT:
 general Stats {
@@ -107,10 +107,10 @@ general Stats {
 
 ```js
 async function main() {
-    let casual = await R6.casual(platform, name)
-    console.log('casual', casual)
+  let casual = await R6.casual(platform, name);
+  console.log('casual', casual);
 }
-main()
+main();
 /*
 OUTPUT:
 casual Stats {
@@ -138,10 +138,10 @@ casual Stats {
 
 ```js
 async function main() {
-    let rank = await R6.rank(platform, name)
-    console.log('rank', rank)
+  let rank = await R6.rank(platform, name);
+  console.log('rank', rank);
 }
-main()
+main();
 /*
 OUTPUT:
 rank Stats {
@@ -169,10 +169,10 @@ rank Stats {
 
 ```js
 async function main() {
-    let deathmatch = await R6.deathmatch(platform, name)
-    console.log('deathmatch', deathmatch)
+  let deathmatch = await R6.deathmatch(platform, name);
+  console.log('deathmatch', deathmatch);
 }
-main()
+main();
 /*
 OUTPUT:
 deathmatch Stats {
@@ -199,10 +199,10 @@ deathmatch Stats {
 
 ```js
 async function main() {
-    let operator = await R6.operator('pc', name, 'ace')
-    console.log('operator', operator)
+  let operator = await R6.operator('pc', name, 'ace');
+  console.log('operator', operator);
 }
-main()
+main();
 /*
 OUTPUT:
 operator Stats {
@@ -229,5 +229,5 @@ operator Stats {
 
 ## Example of made with Discord Bot
 
--   [**hmes98318/R6Bot**](https://github.com/hmes98318/R6Bot) ([invite link](https://discord.com/oauth2/authorize?client_id=968916779734806578&permissions=0&scope=bot%20applications.commands))
--   [**KieranRobson/Clarence-Bot**](https://github.com/KieranRobson/Clarence-Bot)
+- [**hmes98318/R6Bot**](https://github.com/hmes98318/R6Bot) ([invite link](https://discord.com/oauth2/authorize?client_id=968916779734806578&permissions=0&scope=bot%20applications.commands))
+- [**KieranRobson/Clarence-Bot**](https://github.com/KieranRobson/Clarence-Bot)
