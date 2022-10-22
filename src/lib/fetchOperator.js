@@ -2,7 +2,7 @@ const cheerio = require('cheerio');
 const axios = require('axios');
 const filterArray = require('./modules/filterarray');
 
-module.exports = async function (url) {
+module.exports = async function (url, operator) {
   let result = [];
 
   const { data } = await axios({
