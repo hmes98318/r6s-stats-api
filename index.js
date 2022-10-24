@@ -21,7 +21,7 @@ module.exports = {
         if (!checkPlatform(platform.toLowerCase())) return 'PLATFORM_ERROR';
 
         let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/`;
-        let track = await Fetch.trackGeneral(url);
+        let track = await Fetch.general(url);
 
         if (track[0] === 'error') return 'NOT_FOUND';
         if (track[0] === 'timeout') return 'TIME_OUT';
@@ -62,7 +62,7 @@ module.exports = {
         if (!checkPlatform(platform.toLowerCase())) return 'PLATFORM_ERROR';
 
         let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/`;
-        let track = await Fetch.trackCasual(url);
+        let track = await Fetch.casual(url);
 
         if (track[0] === 'error') return 'NOT_FOUND';
         if (track[0] === 'timeout') return 'TIME_OUT';
@@ -101,7 +101,7 @@ module.exports = {
         if (!checkPlatform(platform.toLowerCase())) return 'PLATFORM_ERROR';
 
         let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/`;
-        let track = await Fetch.trackRank(url);
+        let track = await Fetch.rank(url);
 
         if (track[0] === 'error') return 'NOT_FOUND';
         if (track[0] === 'timeout') return 'TIME_OUT';
@@ -141,7 +141,7 @@ module.exports = {
       if (!chechPlatform(platform.toLowerCase())) return "PLATFORM_ERROR";
   
       let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/`;
-      let track = await Fetch.trackUnrank(url);
+      let track = await Fetch.unrank(url);
   
       if (track[0] === "error")
         return "NOT_FOUND";
@@ -180,7 +180,7 @@ module.exports = {
         if (!checkPlatform(platform.toLowerCase())) return 'PLATFORM_ERROR';
 
         let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/`;
-        let track = await Fetch.trackDeathmatch(url);
+        let track = await Fetch.deathmatch(url);
 
         if (track[0] === 'error') return 'NOT_FOUND';
         if (track[0] === 'timeout') return 'TIME_OUT';
@@ -218,7 +218,7 @@ module.exports = {
         if (!checkPlatform(platform.toLowerCase())) return 'PLATFORM_ERROR';
 
         let url = `https://r6.tracker.network/profile/${platform.toLowerCase()}/${name}/operators`;
-        let track = await Fetch.trackOperator(url, operator.toUpperCase());
+        let track = await Fetch.operator(url, operator.toUpperCase());
 
         if (track[0] === 'error') return 'NOT_FOUND';
         if (track[0] === 'timeout') return 'TIME_OUT';
