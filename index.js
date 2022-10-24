@@ -1,8 +1,8 @@
-const Stats = require('./src/data/stats');
+const Stats = require('./src/stats/stats');
 const Fetch = require('./src/fetch');
-const rankImg = require('./src/lib/modules/rankimg');
-const checkPlatform = require('./src/lib/modules/checkplatform');
-const checkNumber = require('./src/lib/modules/checkNumber');
+const rankImg = require('./src/fetch/modules/rankimg');
+const checkPlatform = require('./src/fetch/modules/checkplatform');
+const checkNumber = require('./src/fetch/modules/checknumber');
 
 
 let stats_general = new Stats.dataGeneral();
