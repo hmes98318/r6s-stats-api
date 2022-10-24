@@ -10,7 +10,8 @@ module.exports = async function (url) {
             'Accept': 'text/html',
             'accept-encoding': 'deflate',
             'accept-language': 'en-US,en;q=0.8,et;q=0.6',
-            'cache-control': 'max-age=0'
+            'cache-control': 'max-age=0',
+            'User-Agent': agent()
         },
         timeout: 5000,
     })
