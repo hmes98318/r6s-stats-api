@@ -189,7 +189,7 @@ deathmatch Stats {
 
 ```js
 async function main() {
-    let operator = await R6.operator('pc', name, 'ace');
+    let operator = await R6.operator(platform, name, 'ace');
     console.log('operator', operator);
 }
 main();
