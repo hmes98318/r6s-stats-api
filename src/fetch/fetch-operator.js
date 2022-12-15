@@ -2,6 +2,7 @@ const cheerio = require('cheerio');
 const exec = require('./modules/exec-fetch');
 const filterArray = require('./modules/filterarray');
 
+
 module.exports = async function (url, operator) {
     let result = [];
     let profile = [];
@@ -43,8 +44,8 @@ module.exports = async function (url, operator) {
         if (profile[i].indexOf(operator) !== -1) result.push(profile[i]);
     }
 
-    //console.log(profile);
-    //console.log(result);
+    console.log('profile',profile);
+    console.log('result',result);
 
     if (result.length < 4) {
         result[0] = 'operator_error';

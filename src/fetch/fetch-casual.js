@@ -2,6 +2,7 @@ const cheerio = require('cheerio');
 const exec = require('./modules/exec-fetch');
 const filterArray = require('./modules/filterarray');
 
+
 module.exports = async function (url) {
     let result = [];
     let rank = [];
@@ -18,10 +19,6 @@ module.exports = async function (url) {
 
     $('#profile .r6-season__stats').each(function (i, elem) {
         rank.push(filterArray($(this).text().split('\n')));
-    });
-
-    $('#profile .trn-card').each(function (i, elem) {
-        profile.push(filterArray($(this).text().split('\n')));
     });
 
     $('#profile .trn-card').each(function (i, elem) {
@@ -46,8 +43,8 @@ module.exports = async function (url) {
     }
 
     //console.log(rank);
-    //console.log(profile);
-    //console.log(result);
+    //console.log('profile',profile);
+    //console.log('result',result);
 
     return result;
 };

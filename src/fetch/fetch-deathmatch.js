@@ -2,6 +2,7 @@ const cheerio = require('cheerio');
 const exec = require('./modules/exec-fetch');
 const filterArray = require('./modules/filterarray');
 
+
 module.exports = async function (url) {
     let result = [];
     let rank = [];
@@ -32,8 +33,8 @@ module.exports = async function (url) {
 
     result.push(rank[2]);
 
-    //console.log(rank);
-    //console.log(result);
+    //console.log('rank', rank);
+    //console.log('result', result);
 
     return result;
 };

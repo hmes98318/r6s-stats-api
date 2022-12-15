@@ -13,7 +13,7 @@ let stats_deathmatch = new Stats.dataDeathmatch();
 let stats_operator = new Stats.dataOperator();
 
 
-
+const API_ERROR = `If you see this error, it means it's an API error, please report this error on Github.`;
 
 module.exports = {
     general: async function (platform, name) {
@@ -31,6 +31,8 @@ module.exports = {
         let profile = track[2];
 
         //console.log(track);
+        if (typeof (profile) === 'undefined') throw new Error(API_ERROR);
+
 
         stats_general.url = url;
         stats_general.name = name;
@@ -72,6 +74,8 @@ module.exports = {
         let profile = track[2];
 
         //console.log(track);
+        if (typeof (profile) === 'undefined') throw new Error(API_ERROR);
+
 
         stats_casual.url = url;
         stats_casual.name = name;
@@ -89,8 +93,8 @@ module.exports = {
         stats_casual.kills_match = checkNumber(profile[profile.indexOf('Kills/match') + 1]);
         stats_casual.kills_min = checkNumber(profile[profile.indexOf('Kills/min') + 1]);
 
-        stats_casual.mmr = rank[rank.indexOf('MMR') + 1];
-        stats_casual.rank = rank[rank.indexOf('Rank') + 1];
+        stats_casual.mmr = typeof (rank?.indexOf('MMR')) === 'undefined' ? '0' : rank[rank.indexOf('MMR') + 1];
+        stats_casual.rank = typeof (rank?.indexOf('MMR')) === 'undefined' ? 'UNRANKED' : rank[rank.indexOf('Rank') + 1];
         stats_casual.rank_img = rankImg(stats_casual.rank);
 
         return stats_casual;
@@ -111,6 +115,8 @@ module.exports = {
         let profile = track[2];
 
         //console.log(track);
+        if (typeof (profile) === 'undefined') throw new Error(API_ERROR);
+
 
         stats_rank.url = url;
         stats_rank.name = name;
@@ -128,8 +134,8 @@ module.exports = {
         stats_rank.kills_match = checkNumber(profile[profile.indexOf('Kills/match') + 1]);
         stats_rank.kills_min = checkNumber(profile[profile.indexOf('Kills/min') + 1]);
 
-        stats_rank.mmr = rank[rank.indexOf('MMR') + 1];
-        stats_rank.rank = rank[rank.indexOf('Rank') + 1];
+        stats_rank.mmr = typeof (rank?.indexOf('MMR')) === 'undefined' ? '0' : rank[rank.indexOf('MMR') + 1];
+        stats_rank.rank = typeof (rank?.indexOf('Rank')) === 'undefined' ? 'UNRANKED' : rank[rank.indexOf('Rank') + 1];
         stats_rank.rank_img = rankImg(stats_rank.rank);
 
         return stats_rank;
@@ -190,6 +196,8 @@ module.exports = {
         let profile = track[1];
 
         //console.log(track);
+        if (typeof (profile) === 'undefined') return 'NEVER_PLAY';
+
 
         stats_deathmatch.url = url;
         stats_deathmatch.name = name;
@@ -206,8 +214,8 @@ module.exports = {
         stats_deathmatch.matches = String(parseInt(stats_deathmatch.wins) + parseInt(stats_deathmatch.losses) + parseInt(stats_deathmatch.abandons));
         stats_deathmatch.kills_match = checkNumber(profile[profile.indexOf('Kills/Match') + 1]);
 
-        stats_deathmatch.mmr = rank[rank.indexOf('MMR') + 1];
-        stats_deathmatch.rank = rank[rank.indexOf('Rank') + 1];
+        stats_deathmatch.mmr = typeof (rank?.indexOf('MMR')) === 'undefined' ? '0' : rank[rank.indexOf('MMR') + 1];
+        stats_deathmatch.rank = typeof (rank?.indexOf('Rank')) === 'undefined' ? 'UNRANKED' : rank[rank.indexOf('Rank') + 1];
         stats_deathmatch.rank_img = rankImg(stats_deathmatch.rank);
 
         return stats_deathmatch;
@@ -230,6 +238,8 @@ module.exports = {
         let profile = track[3];
 
         //console.log(track);
+        if (typeof (profile) === 'undefined') throw new Error(API_ERROR);
+
 
         stats_operator.url = url;
         stats_operator.name = name;
