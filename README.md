@@ -33,27 +33,27 @@ main();
 
 ## Valid Parameters
 
-[**general()**](https://github.com/hmes98318/r6s-stats-api#generalplatform-string-namestring)
+[**general()**](#generalplatform-string-name-string)
 > `url`, `name`, `header`, `level`,  
 > `kd`, `kills`, `deaths`, `win_`, `wins`, `losses`, `headshot_`, `headshots`,   
 > `time_played`, `matches_played`, `total_xp`, `melee_kills`, `blind_kills`
 
-[**casual()**](https://github.com/hmes98318/r6s-stats-api#casualplatform-string-namestring)
+[**casual()**](#casualplatform-string-name-string)
 > `url`, `name`, `header`,   
 > `kd`, `kills`, `deaths`, `win_`, `wins`, `losses`,   
 > `time_played`, `matches`, `kills_match`, `kills_min`, `mmr`, `rank`, `rank_img`
 
-[**rank()**](https://github.com/hmes98318/r6s-stats-api#rankplatform-string-namestring)
+[**rank()**](#rankplatform-string-name-string)
 > `url`, `name`, `header`,   
 > `kd`, `kills`, `deaths`, `win_`, `wins`, `losses`,   
 > `time_played`, `matches`, `kills_match`, `kills_min`, `mmr`, `rank`, `rank_img`
 
-[**deathmatch()**](https://github.com/hmes98318/r6s-stats-api#deathmatchplatform-string-namestring)
+[**deathmatch()**](#deathmatchplatform-string-name-string)
 > `url`, `name`, `header`,   
 > `kd`, `kills`, `deaths`, `win_`, `wins`, `losses`, `abadons`,   
 > `matches`, `kills_match`, `mmr`, `rank`, `rank_img`
 
-[**operator()**](https://github.com/hmes98318/r6s-stats-api#operatorplatform-string-namestring-operatorstring)
+[**operator()**](#operatorplatform-string-name-string-operator-string)
 > `url`, `name`, `header`,   
 > `kd`, `kills`, `deaths`, `win_`, `wins`, `losses`, `headshots_`,   
 > `time_played`, `operator`, `operator_img`, `melee_kills`, `operator_stat`, `dbnos`, `xp`
