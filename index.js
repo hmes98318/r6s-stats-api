@@ -93,8 +93,8 @@ module.exports = {
         stats_casual.kills_match = checkNumber(profile[profile.indexOf('Kills/match') + 1]);
         stats_casual.kills_min = checkNumber(profile[profile.indexOf('Kills/min') + 1]);
 
-        stats_casual.mmr = typeof (rank?.indexOf('MMR')) === 'undefined' ? '0' : rank[rank.indexOf('MMR') + 1];
-        stats_casual.rank = typeof (rank?.indexOf('MMR')) === 'undefined' ? 'UNRANKED' : rank[rank.indexOf('Rank') + 1];
+        stats_casual.mmr = typeof (rank?.indexOf('Rank Points')) === 'undefined' ? '0' : checkNumber(rank[rank.indexOf('Rank Points') + 1]);
+        stats_casual.rank = typeof (rank?.indexOf('Rank')) === 'undefined' ? 'UNRANKED' : rank[rank.indexOf('Rank') + 1];
         stats_casual.rank_img = rankImg(stats_casual.rank);
 
         return stats_casual;
@@ -134,7 +134,7 @@ module.exports = {
         stats_rank.kills_match = checkNumber(profile[profile.indexOf('Kills/match') + 1]);
         stats_rank.kills_min = checkNumber(profile[profile.indexOf('Kills/min') + 1]);
 
-        stats_rank.mmr = typeof (rank?.indexOf('MMR')) === 'undefined' ? '0' : rank[rank.indexOf('MMR') + 1];
+        stats_rank.mmr = typeof (rank?.indexOf('Rank Points')) === 'undefined' ? '0' : rank[rank.indexOf('Rank Points') + 1];
         stats_rank.rank = typeof (rank?.indexOf('Rank')) === 'undefined' ? 'UNRANKED' : rank[rank.indexOf('Rank') + 1];
         stats_rank.rank_img = rankImg(stats_rank.rank);
 
@@ -214,7 +214,7 @@ module.exports = {
         stats_deathmatch.matches = String(parseInt(stats_deathmatch.wins) + parseInt(stats_deathmatch.losses) + parseInt(stats_deathmatch.abandons));
         stats_deathmatch.kills_match = checkNumber(profile[profile.indexOf('Kills/Match') + 1]);
 
-        stats_deathmatch.mmr = typeof (rank?.indexOf('MMR')) === 'undefined' ? '0' : rank[rank.indexOf('MMR') + 1];
+        stats_deathmatch.mmr = typeof (rank?.indexOf('Rank Points')) === 'undefined' ? '0' : checkNumber(rank[rank.indexOf('Rank Points') + 1]);
         stats_deathmatch.rank = typeof (rank?.indexOf('Rank')) === 'undefined' ? 'UNRANKED' : rank[rank.indexOf('Rank') + 1];
         stats_deathmatch.rank_img = rankImg(stats_deathmatch.rank);
 

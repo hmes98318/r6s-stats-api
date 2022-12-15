@@ -33,6 +33,8 @@ module.exports = function (img) {
         case 'SILVER I':
             return 'https://imgur.com/57Xg7xm.png';
 
+        case 'GOLD V':
+            return 'https://i.imgur.com/7pThZFx.png';
         case 'GOLD IV':
             return 'https://imgur.com/0nc7epN.png';
         case 'GOLD III':
@@ -42,6 +44,10 @@ module.exports = function (img) {
         case 'GOLD I':
             return 'https://imgur.com/C7Wr3Ty.png';
 
+        case 'PLATINUM V':
+            return 'https://i.imgur.com/YvAyy0s.png';
+        case 'PLATINUM IV':
+            return 'https://i.imgur.com/FYoAbTw.png';
         case 'PLATINUM III':
             return 'https://imgur.com/5xKwhhB.png';
         case 'PLATINUM II':
@@ -49,6 +55,21 @@ module.exports = function (img) {
         case 'PLATINUM I':
             return 'https://imgur.com/jHKSXxD.png';
 
+        case 'EMERALD V':
+            return 'https://i.imgur.com/PeFVREp.png';
+        case 'EMERALD IV':
+            return 'https://i.imgur.com/1cQEwv5.png';
+        case 'EMERALD III':
+            return 'https://i.imgur.com/wGANDF6.png';
+        case 'EMERALD II':
+            return 'https://i.imgur.com/4lcrJKS.png';
+        case 'EMERALD I':
+            return 'https://i.imgur.com/iL7fj41.png';
+
+        case 'DIAMOND V':
+            return 'https://i.imgur.com/J4k8G8m.png';
+        case 'DIAMOND IV':
+            return 'https://i.imgur.com/NpmJe5S.png';
         case 'DIAMOND III':
             return 'https://imgur.com/u7bnEA1.png';
         case 'DIAMOND II':
