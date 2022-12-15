@@ -44,8 +44,8 @@ module.exports = async function (url, operator) {
         if (profile[i].indexOf(operator) !== -1) result.push(profile[i]);
     }
 
-    console.log('profile',profile);
-    console.log('result',result);
+    //console.log('profile',profile);
+    //console.log('result',result);
 
     if (result.length < 4) {
         result[0] = 'operator_error';
