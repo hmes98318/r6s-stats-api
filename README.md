@@ -1,6 +1,6 @@
 # r6s-stats-api
 
-<a href="https://github.com/hmes98318/r6s-stats-api/actions"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/hmes98318/r6s-stats-api/npm-publish.yml?branch=main&style=for-the-badge"></a>
+<a href="https://github.com/hmes98318/r6s-stats-api/actions"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/hmes98318/r6s-stats-api/npm-publish.yml?branch=v1.3.0&style=for-the-badge"></a>
 <a href="https://www.npmjs.com/package/r6s-stats-api"><img alt="npm" src="https://img.shields.io/npm/v/r6s-stats-api?logo=npm&style=for-the-badge"></a>
 <a href="https://github.com/hmes98318/r6s-stats-api/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/hmes98318/r6s-stats-api?style=for-the-badge&color=brightgreen"></a>
 
