@@ -50,7 +50,8 @@ module.exports = {
         stats_general.headshot_ = profile[profile.indexOf('Headshot %') + 1];
         stats_general.headshots = checkNumber(profile[profile.indexOf('Headshots') + 1]);
 
-        stats_general.time_played = profile[profile.indexOf('Time Played') + 1];
+        time_played = profile[profile.indexOf('Time Played') + 1];
+        stats_general.time_played = time_played.match(/\d*H/)? time_played: null;
         stats_general.matches_played = checkNumber(profile[profile.indexOf('Matches Played') + 1]);
         stats_general.total_xp = profile[profile.indexOf('Total XP') + 1];
         stats_general.melee_kills = checkNumber(profile[profile.indexOf('Melee Kills') + 1]);
@@ -88,7 +89,8 @@ module.exports = {
         stats_casual.wins = checkNumber(profile[profile.indexOf('Wins') + 1]);
         stats_casual.losses = checkNumber(profile[profile.indexOf('Losses') + 1]);
 
-        stats_casual.time_played = profile[profile.indexOf('Time Played') + 1];
+        time_played = profile[profile.indexOf('Time Played') + 1];
+        stats_casual.time_played = time_played.match(/\d*H/)? time_played: null;
         stats_casual.matches = checkNumber(profile[profile.indexOf('Matches') + 1]);
         stats_casual.kills_match = checkNumber(profile[profile.indexOf('Kills/match') + 1]);
         stats_casual.kills_min = checkNumber(profile[profile.indexOf('Kills/min') + 1]);
@@ -129,6 +131,7 @@ module.exports = {
         stats_rank.wins = checkNumber(profile[profile.indexOf('Wins') + 1]);
         stats_rank.losses = checkNumber(profile[profile.indexOf('Losses') + 1]);
 
+        time_played = profile[profile.indexOf('Time Played') + 1];
         stats_rank.time_played = profile[profile.indexOf('Time Played') + 1];
         stats_rank.matches = checkNumber(profile[profile.indexOf('Matches') + 1]);
         stats_rank.kills_match = checkNumber(profile[profile.indexOf('Kills/match') + 1]);
@@ -256,7 +259,8 @@ module.exports = {
 
         stats_operator.headshots_ = profile[board.indexOf('Headshot %')];
 
-        stats_operator.time_played = profile[board.indexOf('Time Played')];
+        time_played = profile[profile.indexOf('Time Played') + 1];
+        stats_operator.time_played = profile[profile.indexOf('Time Played') + 1];
         stats_operator.dbnos = profile[board.indexOf('DBNOs')];
         stats_operator.xp = profile[board.indexOf('XP')];
         stats_operator.melee_kills = checkNumber(profile[board.indexOf('Melee Kills')]);
