@@ -1,20 +1,20 @@
 module.exports = class Stats {
-    constructor(url, name, header, level, kd, kills, deaths, win_, wins, losses, headshot_, headshots, time_played, matches_played, total_xp, melee_kills, blind_kills) {
+    constructor(url, name, header, level, kd, kills, deaths, win_percent, wins, losses, headshot_percent, headshots, time_played, matches_played, total_xp, melee_kills, blind_kills) {
 
         this.url = url;
-        this.name = name;
-        this.header = header;
+        this.username = name;
+        this.avatar= header;
 
         this.level = level;
 
         this.kd = kd,
         this.kills = kills,
         this.deaths = deaths,
-        this.win_ = win_,
+        this.win_percent = win_percent,
         this.wins = wins,
         this.losses = losses,
 
-        this.headshot_ = headshot_,
+        this.headshot_percent = headshot_percent,
         this.headshots = headshots,
 
         this.time_played = time_played,

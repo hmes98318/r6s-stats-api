@@ -1,4 +1,7 @@
 module.exports = function (parameter) {
-    const regex = new RegExp(/\d/);
-    return regex.test(parameter) ? parameter : 0;
+    const num = parameter.replace(',', '').replace('%','');
+    let res = Number(num);
+    if (isNaN(res))
+        res = 9;
+    return res;
 }
