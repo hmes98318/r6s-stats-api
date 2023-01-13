@@ -9,7 +9,7 @@ export declare class StatsGeneral {
   win_: string;
   wins: string;
   losses: string;
-  headshot_: string;
+  headshot_percent: string;
   headshots: string;
   time_played: string;
   matches_played: string;

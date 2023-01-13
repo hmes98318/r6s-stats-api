@@ -35,7 +35,7 @@ main();
 
 [**general()**](#generalplatform-string-name-string)
 > `url`, `name`, `header`, `level`,  
-> `kd`, `kills`, `deaths`, `win_`, `wins`, `losses`, `headshot_`, `headshots`,   
+> `kd`, `kills`, `deaths`, `win_`, `wins`, `losses`, `headshot_percent`, `headshots`,   
 > `time_played`, `matches_played`, `total_xp`, `melee_kills`, `blind_kills`
 
 [**casual()**](#casualplatform-string-name-string)
@@ -82,7 +82,7 @@ general Stats {
   win_: '53%',
   wins: '1,810',
   losses: '1,602',
-  headshot_: '39.45%',
+  headshot_percent: '39.45%',
   headshots: '5,438',
   time_played: '790h',
   matches_played: '3,415',
