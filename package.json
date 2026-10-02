@@ -1,12 +1,41 @@
 {
     "name": "r6s-stats-api",
-    "version": "1.3.0",
-    "description": "An api for fetching player statistics from Rainbow Six Siege",
-    "main": "index.js",
+    "version": "2.0.0",
+    "description": "A typed API client for Rainbow Six Siege player statistics",
+    "type": "module",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist",
+        "install.mjs",
+        "README.md",
+        "LICENSE",
+        "docs/api.md",
+        "docs/development.md"
+    ],
+    "engines": {
+        "node": ">=24.15.0"
+    },
     "scripts": {
-        "prettier": "prettier --debug-check .",
-        "prettier:fix": "prettier --write .",
-        "test": "node ./test.js"
+        "postinstall": "node install.mjs",
+        "install:browser": "node install.mjs",
+        "build": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc --noEmit",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "test": "node --experimental-test-module-mocks --test test/*.test.ts",
+        "check": "npm run typecheck && npm run lint && npm test && npm run build",
+        "test:live": "node scripts/test-live.ts",
+        "test:scraping": "node scripts/test-scraping.ts",
+        "test:cleaning": "node scripts/test-cleaning.ts",
+        "test:filters": "node scripts/test-filters.ts"
     },
     "repository": {
         "type": "git",
@@ -15,10 +44,10 @@
     "keywords": [
         "r6",
         "siege",
-        "api",
         "rainbow6",
         "r6s",
-        "stats"
+        "stats",
+        "typescript"
     ],
     "author": "hmes98318 <s0925677069@gmail.com> (https://github.com/hmes98318)",
     "license": "MIT",
@@ -27,10 +56,16 @@
     },
     "homepage": "https://github.com/hmes98318/r6s-stats-api#readme",
     "dependencies": {
-        "axios": "^1.1.3",
-        "cheerio": "^1.0.0-rc.12"
+        "playwright": "1.62.1",
+        "undici": "^8.11.2"
     },
     "devDependencies": {
-        "prettier": "2.7.1"
+        "@eslint/js": "^10.0.0",
+        "@stylistic/eslint-plugin": "^5.10.0",
+        "@types/node": "^24.0.0",
+        "eslint": "^10.11.0",
+        "eslint-plugin-jsdoc": "^65.0.1",
+        "typescript": "~6.0.3",
+        "typescript-eslint": "^8.71.0"
     }
 }

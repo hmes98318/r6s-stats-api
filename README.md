@@ -1,223 +1,114 @@
 # r6s-stats-api
 
-<a href="https://github.com/hmes98318/r6s-stats-api/actions"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/hmes98318/r6s-stats-api/npm-publish.yml?branch=v1.3.0&style=for-the-badge"></a>
-<a href="https://www.npmjs.com/package/r6s-stats-api"><img alt="npm" src="https://img.shields.io/npm/v/r6s-stats-api?logo=npm&style=for-the-badge"></a>
-<a href="https://github.com/hmes98318/r6s-stats-api/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/hmes98318/r6s-stats-api?style=for-the-badge&color=brightgreen"></a>
+A typed API client for Rainbow Six Siege player statistics. Retrieve player overviews, playlist and season totals, recent matches, operator performance and map statistics through a consistent API.
 
-### An api for fetching player statistics from Rainbow Six Siege
+Requires **Node.js 24.15.0 or newer**. Platforms are `ubi`, `psn`, and `xbl`.
 
+## Install
 
-## Installation
-
-```
-$ npm i r6s-stats-api
+```sh
+npm install r6s-stats-api
 ```
 
-## Example Usage
+Playwright is a required runtime dependency and is installed automatically with this package. Installation downloads Chromium into its dependency directory under `node_modules`. Browser access uses this managed runtime without requiring a browser-path environment variable.
 
-You can get the statistics struct of a player by using the code below.
+## Example
 
-```js
-const R6 = require('r6s-stats-api');
+```ts
+import {createClient} from 'r6s-stats-api';
 
-let platform = 'pc';
-let name = 'waifu_-.';
+const client = createClient();
 
-async function main() {
-    let general = await R6.general(platform, name);
-    console.log('general', general);
+/** Retrieve a player and release its browser resources after use. */
+async function main(): Promise<void> {
+    try {
+        const overview = await client.getOverview('ubi', 'waifu_-.');
+        console.log(overview.data.player);
+        console.log(overview.data.overall?.stats);
+
+        const ranked = await client.getRanked('ubi', 'waifu_-.', {
+            season: 33,
+        });
+        console.log(ranked.data?.rank);
+
+        const ace = await client.getOperator('ubi', 'waifu_-.', 'ace');
+        console.log(ace.data?.stats);
+    } finally {
+        await client.close();
+    }
 }
-main();
+
+main().catch(console.error);
 ```
 
+The example is TypeScript and runs directly with `node example.ts` in an ESM project. JavaScript callers omit the type annotations. Node.js 24 CommonJS callers can use `const {createClient} = require('r6s-stats-api');`.
 
-## Valid Parameters
+`createClient()` enables background browser handling by default. Requests use HTTP first and start the browser only when an access challenge requires it. Set `browser: {headless: false}` only for interactive debugging, or `browser: false` for HTTP-only access. Reuse the client across calls and close it after the work is complete. Named functions such as `getOverview(platform, username)` use a shared HTTP-only client.
 
-[**general()**](#generalplatform-string-name-string)
-> `url`, `name`, `header`, `level`,  
-> `kd`, `kills`, `deaths`, `win_`, `wins`, `losses`, `headshot_`, `headshots`,   
-> `time_played`, `matches_played`, `total_xp`, `melee_kills`, `blind_kills`
+## Functions
 
-[**casual()**](#casualplatform-string-name-string)
-> `url`, `name`, `header`,   
-> `kd`, `kills`, `deaths`, `win_`, `wins`, `losses`,   
-> `time_played`, `matches`, `kills_match`, `kills_min`, `mmr`, `rank`, `rank_img`
+| Function                                              | Returns in `result.data`                                                               |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `getOverview(platform, username)`                     | Identity, levels, aliases, overall statistics, lifetime playlists and recorded seasons |
+| `getSeasons(platform, username, filters?)`            | Recorded season statistics, optionally filtered by playlist or season ID               |
+| `getPlaylist(platform, username, playlist, options?)` | Current-season, selected-season or lifetime playlist statistics                        |
+| `getRanked(platform, username, options?)`             | Ranked statistics                                                                      |
+| `getUnranked(platform, username, options?)`           | Unranked statistics                                                                    |
+| `getQuickMatch(platform, username, options?)`         | Quick Match statistics                                                                 |
+| `getMatches(platform, username, options?)`            | One match page with a next-page cursor                                                 |
+| `getOperators(platform, username, filters?)`          | Operator match/round statistics, side and image                                        |
+| `getOperator(platform, username, operator, filters?)` | One operator or `null`                                                                 |
+| `getMaps(platform, username, filters?)`               | Map statistics and image                                                               |
 
-[**rank()**](#rankplatform-string-name-string)
-> `url`, `name`, `header`,   
-> `kd`, `kills`, `deaths`, `win_`, `wins`, `losses`,   
-> `time_played`, `matches`, `kills_match`, `kills_min`, `mmr`, `rank`, `rank_img`
+All functions are available on a dedicated client and as named HTTP-only exports. Each returns `{source, sourceUrl, fetchedAt, data}`. Complete options, types, filtering, errors and data semantics are documented in [the API reference](docs/api.md).
 
-[**deathmatch()**](#deathmatchplatform-string-name-string)
-> `url`, `name`, `header`,   
-> `kd`, `kills`, `deaths`, `win_`, `wins`, `losses`, `abadons`,   
-> `matches`, `kills_match`, `mmr`, `rank`, `rank_img`
+## Data conventions
 
-[**operator()**](#operatorplatform-string-name-string-operator-string)
-> `url`, `name`, `header`,   
-> `kd`, `kills`, `deaths`, `win_`, `wins`, `losses`, `headshots_`,   
-> `time_played`, `operator`, `operator_img`, `melee_kills`, `operator_stat`, `dbnos`, `xp`
+- Counters and ratios are numbers, percentages use the 0–100 scale, durations use seconds, and timestamps use UTC ISO strings.
+- Missing statistics are `null`; recorded zeroes remain `0`.
+- Match wins and round wins remain separate. RP and historical MMR retain their units and rank metadata.
+- Lifetime **Unranked + Quick Match** totals stay combined. Retrieve them with `getPlaylist(platform, username, 'unranked-and-quick-match', {season: 'all'})`; unavailable separate lifetime totals return `null`.
+- Playlist methods default to the current season. No recorded current-season segment returns `null`; historical data is not substituted.
+- Operator data covers Y8S1 onward, and map data covers Y9S3 onward. Both exclude Arcade and Event.
+- Additional metrics remain available in `metrics` with normalized values, units and display text.
 
+Encounters and Trends are not supported.
 
-## Available Functions
+## Errors and request behavior
 
-### general(platform `string`, name `string`);
+```ts
+import {getOverview, R6StatsError} from 'r6s-stats-api';
 
-```js
-async function main() {
-    let general = await R6.general(platform, name);
-    console.log('general', general);
-}
-main();
-/*
-OUTPUT:
-general Stats {
-  url: 'https://r6.tracker.network/profile/pc/waifu_-./',
-  name: 'waifu_-.',
-  header: 'https://ubisoft-avatars.akamaized.net/c5724a1b-374a-4a7e-898d-9f271ceb152f/default_256_256.png',
-  level: '205',
-  kd: '1.32',
-  kills: '13,784',
-  deaths: '10,470',
-  win_: '53%',
-  wins: '1,810',
-  losses: '1,602',
-  headshot_: '39.45%',
-  headshots: '5,438',
-  time_played: '790h',
-  matches_played: '3,415',
-  total_xp: '35,359,675',
-  melee_kills: '178',
-  blind_kills: '28'
-}
-*/
+getOverview('ubi', 'waifu_-.').catch((error: unknown) => {
+    if (error instanceof R6StatsError) {
+        console.error(error.code, error.status, error.retryAfterMs);
+    }
+});
 ```
 
-### casual(platform `string`, name `string`);
+Requests have timeouts, an 8 MiB response limit, a bounded cache, request coalescing and a default one-second cadence. Transient retries are limited and respect `Retry-After`. An access challenge switches the client to its isolated browser renderer unless browser handling is disabled. Call `close()` to release the browser and cached data.
 
-```js
-async function main() {
-    let casual = await R6.casual(platform, name);
-    console.log('casual', casual);
-}
-main();
-/*
-OUTPUT:
-casual Stats {
-  url: 'https://r6.tracker.network/profile/pc/waifu_-./',
-  name: 'waifu_-.',
-  header: 'https://ubisoft-avatars.akamaized.net/c5724a1b-374a-4a7e-898d-9f271ceb152f/default_256_256.png',
-  kd: '1.35',
-  kills: '12,430',
-  deaths: '9,190',
-  win_: '53.5%',
-  wins: '1,652',
-  losses: '1,435',
-  time_played: '711h 45m 6s',
-  matches: '3,087',
-  kills_match: '4.03',
-  kills_min: '0.29',
-  mmr: '3,571',
-  rank: 'PLATINUM II',
-  rank_img: 'https://imgur.com/YrDuNNC.png'
-}
-*/
+## Development
+
+Use the latest Node.js 24 LTS release for repository development.
+
+```sh
+npm ci
+npm run check
 ```
 
-### rank(platform `string`, name `string`);
+Unit tests use fabricated fixtures and disable real network access. Run a manual live check directly from TypeScript:
 
-```js
-async function main() {
-    let rank = await R6.rank(platform, name);
-    console.log('rank', rank);
-}
-main();
-/*
-OUTPUT:
-rank Stats {
-  url: 'https://r6.tracker.network/profile/pc/waifu_-./',
-  name: 'waifu_-.',
-  header: 'https://ubisoft-avatars.akamaized.net/c5724a1b-374a-4a7e-898d-9f271ceb152f/default_256_256.png',
-  kd: '1.05',
-  kills: '507',
-  deaths: '485',
-  win_: '54.8%',
-  wins: '68',
-  losses: '56',
-  time_played: '38h 47m 38s',
-  matches: '124',
-  kills_match: '4.09',
-  kills_min: '0.22',
-  mmr: '2,500',
-  rank: '-',
-  rank_img: 'https://imgur.com/PvLQN8r.png'
-}
-*/
+```sh
+node scripts/test-live.ts ubi "waifu_-."
 ```
 
-### deathmatch(platform `string`, name `string`);
+Manual live scripts use a headless browser and are excluded from unit tests and CI. Pass `--headed` only for interactive debugging. See [development documentation](docs/development.md) for commands, configuration and project structure. Coding style follows the Google TypeScript Style Guide with four-space indentation, semicolons, JSDoc comments, ESLint and `.editorconfig`.
 
-```js
-async function main() {
-    let deathmatch = await R6.deathmatch(platform, name);
-    console.log('deathmatch', deathmatch);
-}
-main();
-/*
-OUTPUT:
-deathmatch Stats {
-  url: 'https://r6.tracker.network/profile/pc/waifu_-./',
-  name: 'waifu_-.',
-  header: 'https://ubisoft-avatars.akamaized.net/c5724a1b-374a-4a7e-898d-9f271ceb152f/default_256_256.png',
-  kd: '1.22',
-  kills: '128',
-  deaths: '105',
-  win_: '36.36',
-  wins: '4',
-  losses: '7',
-  abandons: '0',
-  matches: '11',
-  kills_match: '11.64',
-  mmr: '2,733',
-  rank: 'GOLD III',
-  rank_img: 'https://imgur.com/hQzavB2.png'
-}
-*/
-```
+## Breaking changes from v1
 
-### operator(platform `string`, name `string`, operator `string`);
+The implementation was replaced. The former `general`, `casual`, `rank`, `deathmatch` and `operator` functions, `pc` platform alias, string-formatted counters and handwritten declaration files are removed. Use the named functions and generated types. No v1 compatibility layer is included.
 
-```js
-async function main() {
-    let operator = await R6.operator(platform, name, 'ace');
-    console.log('operator', operator);
-}
-main();
-/*
-OUTPUT:
-operator Stats {
-  url: 'https://r6.tracker.network/profile/pc/waifu_-./operators',
-  name: 'waifu_-.',
-  header: 'https://ubisoft-avatars.akamaized.net/c5724a1b-374a-4a7e-898d-9f271ceb152f/default_256_256.png',
-  operator: 'ACE',
-  time_played: '100h 29m',
-  kills: '2,216',
-  deaths: '1,302',
-  kd: '1.70',
-  wins: '964',
-  losses: '948',
-  win_: '50%',
-  headshots_: '43%',
-  dbnos: '737',
-  xp: '4,907,678',
-  melee_kills: '13',
-  operator_stat: '3,635  ',
-  operator_img: 'https://trackercdn.com/cdn/r6.tracker.network/operators/badges/ace.png'
-}
-*/
-```
+## License
 
-## Example of made with Discord Bot  
-
-- [**hmes98318/R6Bot**](https://github.com/hmes98318/R6Bot)  
-- [**KieranRobson/Clarence-Bot**](https://github.com/KieranRobson/Clarence-Bot)  
+[MIT](LICENSE). Rainbow Six Siege is a Ubisoft trademark. This library is not endorsed by Ubisoft.

@@ -1,0 +1,3 @@
+* text=auto eol=lf
+LICENSE text eol=crlf
+docs/standards/common/development-guidelines.md -text
