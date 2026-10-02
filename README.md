@@ -104,11 +104,3 @@ node scripts/test-live.ts ubi "waifu_-."
 ```
 
 Manual live scripts use a headless browser and are excluded from unit tests and CI. Pass `--headed` only for interactive debugging. See [development documentation](docs/development.md) for commands, configuration and project structure. Coding style follows the Google TypeScript Style Guide with four-space indentation, semicolons, JSDoc comments, ESLint and `.editorconfig`.
-
-## Breaking changes from v1
-
-The implementation was replaced. The former `general`, `casual`, `rank`, `deathmatch` and `operator` functions, `pc` platform alias, string-formatted counters and handwritten declaration files are removed. Use the named functions and generated types. No v1 compatibility layer is included.
-
-## License
-
-[MIT](LICENSE). Rainbow Six Siege is a Ubisoft trademark. This library is not endorsed by Ubisoft.
